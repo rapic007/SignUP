@@ -8,40 +8,32 @@
 import UIKit
 
 class MainScreen: UIViewController {
-
+    
     @IBOutlet var mainImage: UIImageView!
     
     @IBOutlet var mainLabel: UILabel!
-    
-    @IBOutlet var emailTF: UITextField!
-    
-    @IBOutlet var passwordTF: UITextField!
-    
-    @IBOutlet var forgotButton: UIButton!
-    
-    @IBOutlet var signUpButton: UIButton!
+
+    @IBOutlet var emailTextField: CustomTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        
         mainImage.image = UIImage(named: "mainImage")
-        mainImage.backgroundColor = .white
-        
-        
+
         mainLabel.textColor = UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)
         mainLabel.font = UIFont(name: "montserrat-regular", size: 28)
+        mainLabel.textAlignment = .center
+        mainLabel.text = "Войти в аккаунт"
         
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1
-
-        mainLabel.textAlignment = .center // Хотел спросить не могу никак его выставить по центру
-        mainLabel.attributedText = NSMutableAttributedString(string: "Войти в аккаунт", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+        button.setTitle("buton", for: .normal)
+        button.backgroundColor = .red
         
-        signUpButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
-        signUpButton.layer.cornerRadius = 20
+        emailTextField.rightView = button
+        emailTextField.rightViewMode = .always
+        
         
     }
-    
-
-
 }
