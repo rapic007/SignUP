@@ -12,28 +12,91 @@ class MainScreen: UIViewController {
     @IBOutlet var mainImage: UIImageView!
     
     @IBOutlet var mainLabel: UILabel!
-
+    
     @IBOutlet var emailTextField: CustomTextField!
+    
+    @IBOutlet var passwordTextField: CustomTextField!
+    
+    @IBOutlet var loginButton: UIButton!
+    
+    @IBOutlet var registrationLabel: UILabel!
+    
+    @IBOutlet var orLabel: UILabel!
+    
+    @IBOutlet var googleImage: UIImageView!
+    @IBOutlet var facebookImage: UIImageView!
+    @IBOutlet var appleImage: UIImageView!
+    
+    @IBOutlet var continueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        screenSettings()
+        
+    }
+    
+    func screenSettings() {
         view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
+        //MARK: SET Image
+        
         mainImage.image = UIImage(named: "mainImage")
-
+        googleImage.image = UIImage(named:"googleImage")
+        facebookImage.image = UIImage(named: "facebookImage")
+        appleImage.image = UIImage(named: "appleImage")
+        
+        //MARK: Mainlabel Propeties
+        
         mainLabel.textColor = UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)
         mainLabel.font = UIFont(name: "montserrat-regular", size: 28)
         mainLabel.textAlignment = .center
         mainLabel.text = "Войти в аккаунт"
         
-         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-        button.setTitle("buton", for: .normal)
-        button.backgroundColor = .red
+        //MARK: EmailTF Propeties
         
-        emailTextField.rightView = button
-        emailTextField.rightViewMode = .always
+        emailTextField.placeholder = "Введите свой email"
+        emailTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 50)
+        emailTextField.setupLeftSideImage(ImageViewNamed: "emailImage")
         
+        //MARK: PasswordTF Propeties
+        
+        passwordTextField.placeholder = "Введите пароль"
+        passwordTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 50)
+        passwordTextField.setupLeftSideImage(ImageViewNamed: "passwordImage")
+    
+        
+       
+        
+        //MARK: LoginButton Properties
+        
+        loginButton.setTitle("Войти", for: .normal)
+        loginButton.titleLabel?.font = UIFont(name: "lato-regular", size: 15)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.setTitleColor(.lightGray, for: .highlighted)
+        loginButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
+        loginButton.layer.cornerRadius = 22
+        
+        
+        //MARK: registrationLabel Properties
+        
+        registrationLabel.textColor = UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)
+        registrationLabel.font = UIFont(name: "lato-regular", size: 15)
+        registrationLabel.textAlignment = .center
+        registrationLabel.text = "Нет аккаунта? Зарегистрироваться"
+        
+        //MARK: orabel Properties
+        
+        orLabel.textColor = UIColor(red: 0.567, green: 0.567, blue: 0.567, alpha: 1)
+        orLabel.font = UIFont(name: "lato-regular", size: 15)
+        orLabel.textAlignment = .center
+        orLabel.text = "или"
+        
+        //MARK: continueLabel Properties
+        
+        continueLabel.textColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1)
+        continueLabel.font = UIFont(name: "lato-regular", size: 15)
+        continueLabel.textAlignment = .center
+        continueLabel.text = "Продолжить без регистрации"
         
     }
 }
