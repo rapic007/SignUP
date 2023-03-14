@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDD13429BC79F8004443D4 /* СustomTextField.swift */; };
 		CBCAAA6129BCA7450056FB23 /* lato-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */; };
+		CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */; };
 		CBCB7B2029BA53DB00E5F34D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB7B1F29BA53DB00E5F34D /* AppDelegate.swift */; };
 		CBCB7B2229BA53DB00E5F34D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB7B2129BA53DB00E5F34D /* SceneDelegate.swift */; };
 		CBCB7B2729BA53DB00E5F34D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBCB7B2529BA53DB00E5F34D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		CBBDD13429BC79F8004443D4 /* СustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СustomTextField.swift"; sourceTree = "<group>"; };
 		CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-regular.ttf"; sourceTree = "<group>"; };
+		CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshPasswordScreen.swift; sourceTree = "<group>"; };
 		CBCB7B1C29BA53DB00E5F34D /* SignUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBCB7B1F29BA53DB00E5F34D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBCB7B2129BA53DB00E5F34D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				CBCB7B1F29BA53DB00E5F34D /* AppDelegate.swift */,
 				CBCB7B2129BA53DB00E5F34D /* SceneDelegate.swift */,
 				CBCB7B3329BA542300E5F34D /* MainScreen.swift */,
+				CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */,
 				CBBDD13429BC79F8004443D4 /* СustomTextField.swift */,
 				CBCB7B2529BA53DB00E5F34D /* Main.storyboard */,
 				CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */,
@@ -161,6 +164,7 @@
 				CBCB7B2029BA53DB00E5F34D /* AppDelegate.swift in Sources */,
 				CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */,
 				CBCB7B2229BA53DB00E5F34D /* SceneDelegate.swift in Sources */,
+				CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

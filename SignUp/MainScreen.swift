@@ -36,7 +36,7 @@ class MainScreen: UIViewController {
     }
     
     func screenSettings() {
-        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         
         //MARK: SET Image
         
@@ -58,12 +58,13 @@ class MainScreen: UIViewController {
         emailTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 50)
         emailTextField.setupLeftSideImage(ImageViewNamed: "emailImage")
         
-        //MARK: PasswordTF Propeties
+        
+        //MARK: PasswordTF Properties
         
         passwordTextField.placeholder = "Введите пароль"
-        passwordTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 50)
+        passwordTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 85)
         passwordTextField.setupLeftSideImage(ImageViewNamed: "passwordImage")
-    
+        passwordTextField.setupRightSideButton()
         
        
         
@@ -79,12 +80,12 @@ class MainScreen: UIViewController {
         
         //MARK: registrationLabel Properties
         
-        registrationLabel.textColor = UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)
+        registrationLabel.textColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1)
         registrationLabel.font = UIFont(name: "lato-regular", size: 15)
         registrationLabel.textAlignment = .center
         registrationLabel.text = "Нет аккаунта? Зарегистрироваться"
         
-        //MARK: orabel Properties
+        //MARK: orLabel Properties
         
         orLabel.textColor = UIColor(red: 0.567, green: 0.567, blue: 0.567, alpha: 1)
         orLabel.font = UIFont(name: "lato-regular", size: 15)

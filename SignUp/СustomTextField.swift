@@ -57,4 +57,32 @@ final class CustomTextField: UITextField {
         leftViewMode = .always
         self.tintColor = .lightGray
     }
+    func setupRightSideButton() {
+
+        let button = UIButton()
+
+        button.frame = CGRect(x: 0, y: 0, width: 65, height: 44)
+        button.setTitle("Забыли?", for: .normal)
+        button.titleLabel?.font = UIFont(name: "lato-regular", size: 16)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.lightGray, for: .highlighted)
+        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 80, height: 44))
+        containerView.addSubview(button)
+        rightView = containerView
+        rightViewMode = .always
+        self.tintColor = .lightGray
+        
+    }
+    
+    @objc private func didTapButton() {
+        let rootVC = UIViewController()
+        rootVC.title = "welcome"
+        let navVC = UINavigationController(rootViewController: rootVC)
+        
+        
+        
+    }
+    
 }
