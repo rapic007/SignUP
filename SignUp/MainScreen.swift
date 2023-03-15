@@ -65,6 +65,12 @@ class MainScreen: UIViewController {
         passwordTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 85)
         passwordTextField.setupLeftSideImage(ImageViewNamed: "passwordImage")
         passwordTextField.setupRightSideButton()
+        passwordTextField.buttonHandler = { [weak self] in
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "RefreshPasswordScreen")
+            self?.present(vc, animated: true)
+        }
         
        
         
@@ -99,5 +105,7 @@ class MainScreen: UIViewController {
         continueLabel.textAlignment = .center
         continueLabel.text = "Продолжить без регистрации"
         
+      
     }
+    
 }

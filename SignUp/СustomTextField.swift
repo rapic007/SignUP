@@ -12,7 +12,11 @@ final class CustomTextField: UITextField {
     
 //MARK: - Property
     
+    var buttonHandler: (() -> Void)?
+    
     var padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    private let button = UIButton()
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -59,7 +63,8 @@ final class CustomTextField: UITextField {
     }
     func setupRightSideButton() {
 
-        let button = UIButton()
+        
+        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
 
         button.frame = CGRect(x: 0, y: 0, width: 65, height: 44)
         button.setTitle("Забыли?", for: .normal)
@@ -71,11 +76,13 @@ final class CustomTextField: UITextField {
         containerView.addSubview(button)
         rightView = containerView
         rightViewMode = .always
-        self.tintColor = .lightGray
+        
         
     }
         
-    
+    @objc
+    func rightButtonTapped() {
+        buttonHandler?()
+    }
     }
     
-}

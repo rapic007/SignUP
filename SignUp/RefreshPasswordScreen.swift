@@ -61,6 +61,9 @@ class RefreshPasswordScreen: UIViewController {
         recoverButton.layer.cornerRadius = 22
         
     }
+    @IBAction func backMainScreen(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     /*
     // MARK: - Navigation
 
