@@ -79,10 +79,28 @@ final class CustomTextField: UITextField {
         
         
     }
+    func eyeButton() {
+        button.frame = CGRect(x: -15, y: 0, width: 24, height: 24)
+        button.setImage(UIImage(named: "eyeImage"), for: .normal)
+        button.tintColor = .lightGray
+        button.addTarget(self, action: #selector(eyeTapped), for: .touchUpInside)
+
+        
+        let containerView = UIView(frame: CGRect(x: -15, y: 0, width: 24, height: 24))
+        containerView.addSubview(button)
+        rightView = containerView
+        rightViewMode = .always
+    }
         
     @objc
     func rightButtonTapped() {
         buttonHandler?()
+    }
+    
+    @objc
+    func eyeTapped() {
+        isSecureTextEntry.toggle()
+        
     }
     }
     

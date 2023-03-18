@@ -59,19 +59,17 @@ class RefreshPasswordScreen: UIViewController {
         recoverButton.setTitleColor(.lightGray, for: .highlighted)
         recoverButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
         recoverButton.layer.cornerRadius = 22
+        recoverButton.addTarget(self, action: #selector(recoverButtonTapped), for: .touchUpInside)
         
     }
     @IBAction func backMainScreen(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc
+    func recoverButtonTapped() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "NewPasswordScreen")
+        self.present(vc, animated: true)
     }
-    */
-
 }

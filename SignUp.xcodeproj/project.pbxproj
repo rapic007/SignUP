@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB002CFC29C3844B00BB1704 /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */; };
 		CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDD13429BC79F8004443D4 /* СustomTextField.swift */; };
 		CBCAAA6129BCA7450056FB23 /* lato-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */; };
 		CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
 		CBBDD13429BC79F8004443D4 /* СustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СustomTextField.swift"; sourceTree = "<group>"; };
 		CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-regular.ttf"; sourceTree = "<group>"; };
 		CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshPasswordScreen.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				CBCB7B2129BA53DB00E5F34D /* SceneDelegate.swift */,
 				CBCB7B3329BA542300E5F34D /* MainScreen.swift */,
 				CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */,
+				CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */,
 				CBBDD13429BC79F8004443D4 /* СustomTextField.swift */,
 				CBCB7B2529BA53DB00E5F34D /* Main.storyboard */,
 				CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 				CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */,
 				CBCB7B2229BA53DB00E5F34D /* SceneDelegate.swift in Sources */,
 				CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */,
+				CB002CFC29C3844B00BB1704 /* NewPasswordScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
