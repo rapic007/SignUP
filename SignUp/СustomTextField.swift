@@ -100,7 +100,6 @@ final class CustomTextField: UITextField {
     @objc
     func eyeTapped() {
         isSecureTextEntry.toggle()
-        
     }
     }
     

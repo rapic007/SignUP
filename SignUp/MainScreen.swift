@@ -86,10 +86,19 @@ class MainScreen: UIViewController {
         
         //MARK: registrationLabel Properties
         
-        registrationLabel.textColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1)
-        registrationLabel.font = UIFont(name: "lato-regular", size: 15)
         registrationLabel.textAlignment = .center
-        registrationLabel.text = "Нет аккаунта? Зарегистрироваться"
+
+        let noAccountAttributes: [NSAttributedString.Key : Any] = [ NSAttributedString.Key.foregroundColor: UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1), NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!]
+       
+        let registrationAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1), NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!]
+        let registrationAddAttr = NSAttributedString(string: "Зарегистрироваться", attributes: registrationAttributes)
+        
+        
+        let noAccountaddAtrr = NSMutableAttributedString(string: "Нет аккаунта? ", attributes: noAccountAttributes)
+        noAccountaddAtrr.append( registrationAddAttr)
+        
+        registrationLabel.attributedText = noAccountaddAtrr
+        
         
         //MARK: orLabel Properties
         
