@@ -80,13 +80,13 @@ final class CustomTextField: UITextField {
         
     }
     func eyeButton() {
-        button.frame = CGRect(x: -15, y: 0, width: 24, height: 24)
+        button.frame = CGRect(x: -5, y: 0, width: 24, height: 24)
         button.setImage(UIImage(named: "eyeImage"), for: .normal)
         button.tintColor = .lightGray
         button.addTarget(self, action: #selector(eyeTapped), for: .touchUpInside)
 
         
-        let containerView = UIView(frame: CGRect(x: -15, y: 0, width: 24, height: 24))
+        let containerView = UIView(frame: CGRect(x: -10, y: 0, width: 35, height: 24))
         containerView.addSubview(button)
         rightView = containerView
         rightViewMode = .always
