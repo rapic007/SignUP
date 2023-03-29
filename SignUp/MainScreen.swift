@@ -82,6 +82,7 @@ class MainScreen: UIViewController {
         loginButton.setTitleColor(.lightGray, for: .highlighted)
         loginButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
         loginButton.layer.cornerRadius = 22
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         
         //MARK: registrationLabel Properties
@@ -116,5 +117,13 @@ class MainScreen: UIViewController {
         
       
     }
-    
-}
+    @objc
+    func loginButtonTapped() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc =  storyboard.instantiateViewController(withIdentifier: "TaskScreen")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        
+    }
+        
+    }
