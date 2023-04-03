@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="868" y="-0.44977511244377816"/>
         </scene>
-        <!--Task Screen-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="93U-rz-DFW">
             <objects>
-                <viewController id="hXy-Pe-6w9" customClass="TaskScreen" customModule="SignUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hXy-Pe-6w9" customClass="MainTabBarController" customModule="SignUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYt-la-XAr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,7 +161,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="tfX-4C-oGb">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="backMainScreen:" destination="hXy-Pe-6w9" id="shO-fD-dqa"/>
+                                <action selector="backMainScreen:" destination="hXy-Pe-6w9" id="Igf-Bb-QMt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

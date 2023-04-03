@@ -9,7 +9,7 @@ import UIKit
 
 class TaskScreen: UIViewController {
     
-    private let numbersSections = WorkWithDate.getData(daysCount: 2)
+    private let numbersSections = WorkWithDate.getData(daysCount: 4)
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -24,6 +24,13 @@ class TaskScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
+        
+        let newTaskButton  = UIButton()
+        newTaskButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        newTaskButton.setImage(UIImage(named: "newTaskButton"), for: .normal)
+        newTaskButton.tintColor = .lightGray
+        view.addSubview(newTaskButton)
+        
     }
     
     private func setupScreen() {
@@ -40,10 +47,6 @@ class TaskScreen: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 50)
         ])
-    }
-    
-    @IBAction func backMainScreen(_ sender: Any) {
-        self.dismiss(animated: true)
     }
 }
 
