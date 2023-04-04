@@ -1,10 +1,3 @@
-//
-//  СustomTextField.swift
-//  SignUp
-//
-//  Created by Влад  on 11.03.23.
-//
-
 import UIKit
 
 //MARK: - CustomTextField

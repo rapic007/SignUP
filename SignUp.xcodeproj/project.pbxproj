@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CB002CFC29C3844B00BB1704 /* NewPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */; };
+		CB4CC8FB29DC84F4002C9960 /* DayCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CC8FA29DC84F4002C9960 /* DayCellModel.swift */; };
+		CB4CC8FD29DC9444002C9960 /* WorkWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4CC8FC29DC9444002C9960 /* WorkWithDate.swift */; };
 		CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDD13429BC79F8004443D4 /* СustomTextField.swift */; };
 		CBCAAA6129BCA7450056FB23 /* lato-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */; };
 		CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */; };
@@ -16,7 +18,7 @@
 		CBCB7B2729BA53DB00E5F34D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBCB7B2529BA53DB00E5F34D /* Main.storyboard */; };
 		CBCB7B2929BA53DB00E5F34D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */; };
 		CBCB7B2C29BA53DB00E5F34D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBCB7B2A29BA53DB00E5F34D /* LaunchScreen.storyboard */; };
-		CBCB7B3429BA542300E5F34D /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB7B3329BA542300E5F34D /* MainScreen.swift */; };
+		CBCB7B3429BA542300E5F34D /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB7B3329BA542300E5F34D /* LoginScreen.swift */; };
 		CBCB7B3729BA561400E5F34D /* montserrat-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCB7B3629BA561400E5F34D /* montserrat-regular.ttf */; };
 		CBEAA6A329DB1E7A0046494E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAA6A229DB1E7A0046494E /* MainTabBarController.swift */; };
 		CBEAA6A529DB24EA0046494E /* CourseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAA6A429DB24EA0046494E /* CourseScreen.swift */; };
@@ -27,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordScreen.swift; sourceTree = "<group>"; };
+		CB4CC8FA29DC84F4002C9960 /* DayCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellModel.swift; sourceTree = "<group>"; };
+		CB4CC8FC29DC9444002C9960 /* WorkWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWithDate.swift; sourceTree = "<group>"; };
 		CBBDD13429BC79F8004443D4 /* СustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СustomTextField.swift"; sourceTree = "<group>"; };
 		CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-regular.ttf"; sourceTree = "<group>"; };
 		CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshPasswordScreen.swift; sourceTree = "<group>"; };
@@ -37,7 +41,7 @@
 		CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBCB7B2B29BA53DB00E5F34D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBCB7B2D29BA53DB00E5F34D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBCB7B3329BA542300E5F34D /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		CBCB7B3329BA542300E5F34D /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		CBCB7B3629BA561400E5F34D /* montserrat-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "montserrat-regular.ttf"; sourceTree = "<group>"; };
 		CBEAA6A229DB1E7A0046494E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CBEAA6A429DB24EA0046494E /* CourseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScreen.swift; sourceTree = "<group>"; };
@@ -57,6 +61,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB4CC8ED29DC82C9002C9960 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CBBDD13429BC79F8004443D4 /* СustomTextField.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CB4CC8EF29DC832A002C9960 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CB4CC8F629DC846E002C9960 /* Main */,
+				CB4CC8F129DC8361002C9960 /* Authorization */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CB4CC8F129DC8361002C9960 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				CB4CC8F529DC842F002C9960 /* NewPasswordScreen */,
+				CB4CC8F429DC8411002C9960 /* RefreshPasswordScreen */,
+				CB4CC8F229DC8377002C9960 /* LoginScreen */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		CB4CC8F229DC8377002C9960 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CBCB7B3329BA542300E5F34D /* LoginScreen.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		CB4CC8F429DC8411002C9960 /* RefreshPasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */,
+			);
+			path = RefreshPasswordScreen;
+			sourceTree = "<group>";
+		};
+		CB4CC8F529DC842F002C9960 /* NewPasswordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */,
+			);
+			path = NewPasswordScreen;
+			sourceTree = "<group>";
+		};
+		CB4CC8F629DC846E002C9960 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CB4CC8F729DC8476002C9960 /* Model */,
+				CB4CC8F829DC847E002C9960 /* View */,
+				CB4CC8F929DC84D3002C9960 /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CB4CC8F729DC8476002C9960 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB4CC8FA29DC84F4002C9960 /* DayCellModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB4CC8F829DC847E002C9960 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBEAA6A229DB1E7A0046494E /* MainTabBarController.swift */,
+				CBF61C5B29D33DB500B590F9 /* DayCell.swift */,
+				CBEAA6A629DB255C0046494E /* ProfileScreen.swift */,
+				CBEAA6A429DB24EA0046494E /* CourseScreen.swift */,
+				CBF61C5529D1ED9800B590F9 /* TaskScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB4CC8F929DC84D3002C9960 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB4CC8FC29DC9444002C9960 /* WorkWithDate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		CBCB7B1329BA53DB00E5F34D = {
 			isa = PBXGroup;
 			children = (
@@ -76,14 +169,11 @@
 		CBCB7B1E29BA53DB00E5F34D /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				CB4CC8ED29DC82C9002C9960 /* Common */,
+				CB4CC8EF29DC832A002C9960 /* Screens */,
 				CBCB7B3529BA55F000E5F34D /* Fonts */,
 				CBCB7B1F29BA53DB00E5F34D /* AppDelegate.swift */,
 				CBCB7B2129BA53DB00E5F34D /* SceneDelegate.swift */,
-				CBCB7B3329BA542300E5F34D /* MainScreen.swift */,
-				CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */,
-				CB002CFB29C3844B00BB1704 /* NewPasswordScreen.swift */,
-				CBBDD13429BC79F8004443D4 /* СustomTextField.swift */,
-				CBEAA6A129DB1E260046494E /* TaskSc */,
 				CBCB7B2529BA53DB00E5F34D /* Main.storyboard */,
 				CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */,
 				CBCB7B2A29BA53DB00E5F34D /* LaunchScreen.storyboard */,
@@ -99,18 +189,6 @@
 				CBCB7B3629BA561400E5F34D /* montserrat-regular.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		CBEAA6A129DB1E260046494E /* TaskSc */ = {
-			isa = PBXGroup;
-			children = (
-				CBEAA6A229DB1E7A0046494E /* MainTabBarController.swift */,
-				CBEAA6A629DB255C0046494E /* ProfileScreen.swift */,
-				CBEAA6A429DB24EA0046494E /* CourseScreen.swift */,
-				CBF61C5529D1ED9800B590F9 /* TaskScreen.swift */,
-				CBF61C5B29D33DB500B590F9 /* DayCell.swift */,
-			);
-			path = TaskSc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,12 +266,14 @@
 			files = (
 				CBEAA6A529DB24EA0046494E /* CourseScreen.swift in Sources */,
 				CBF61C5629D1ED9800B590F9 /* TaskScreen.swift in Sources */,
-				CBCB7B3429BA542300E5F34D /* MainScreen.swift in Sources */,
+				CBCB7B3429BA542300E5F34D /* LoginScreen.swift in Sources */,
 				CBEAA6A329DB1E7A0046494E /* MainTabBarController.swift in Sources */,
+				CB4CC8FB29DC84F4002C9960 /* DayCellModel.swift in Sources */,
 				CBEAA6A729DB255C0046494E /* ProfileScreen.swift in Sources */,
 				CBCB7B2029BA53DB00E5F34D /* AppDelegate.swift in Sources */,
 				CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */,
 				CBCB7B2229BA53DB00E5F34D /* SceneDelegate.swift in Sources */,
+				CB4CC8FD29DC9444002C9960 /* WorkWithDate.swift in Sources */,
 				CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */,
 				CBF61C5C29D33DB500B590F9 /* DayCell.swift in Sources */,
 				CB002CFC29C3844B00BB1704 /* NewPasswordScreen.swift in Sources */,
