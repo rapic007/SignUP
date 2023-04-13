@@ -44,8 +44,6 @@ struct WorkWithDate {
                                           status: randomStatus)
             
             result.insert(minusModel, at: 0)
-            
-            
         }
         
         return result

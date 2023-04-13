@@ -1,10 +1,3 @@
-//
-//  TaskScreen.swift
-//  SignUp
-//
-//  Created by Влад  on 27.03.23.
-//
-
 import UIKit
 
 class TaskScreen: UIViewController {
@@ -24,14 +17,8 @@ class TaskScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
-        
-        let newTaskButton  = UIButton()
-        newTaskButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        newTaskButton.setImage(UIImage(named: "newTaskButton"), for: .normal)
-        newTaskButton.tintColor = .lightGray
-        view.addSubview(newTaskButton)
-        
     }
+
     
     private func setupScreen() {
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -47,6 +34,30 @@ class TaskScreen: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        let newTaskButton  = UIButton()
+        newTaskButton.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
+        newTaskButton.setImage(UIImage(named: "newTaskButton"), for: .normal)
+        newTaskButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        view.addSubview(newTaskButton)
+        newTaskButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            newTaskButton.heightAnchor.constraint(equalToConstant: 48),
+            newTaskButton.widthAnchor.constraint(equalToConstant: 48),
+            newTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -97),
+            newTaskButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            
+        ])
+    }
+    
+    @objc
+    func buttonTapped() {
+        let vc = TaskTypeController()
+        vc.modalPresentationStyle = .pageSheet
+        vc.sheetPresentationController?.prefersGrabberVisible = true
+        self.present(vc, animated: true)
     }
 }
 

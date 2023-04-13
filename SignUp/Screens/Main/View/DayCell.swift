@@ -1,7 +1,5 @@
 import UIKit
 
-
-
 class DayCell: UICollectionViewCell {
     
     private let dayNameLabel = UILabel()

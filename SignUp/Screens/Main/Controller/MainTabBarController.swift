@@ -1,10 +1,3 @@
-//
-//  MainTabBarController.swift
-//  SignUp
-//
-//  Created by Влад  on 3.04.23.
-//
-
 import UIKit
 
 class MainTabBarController: UITabBarController {
