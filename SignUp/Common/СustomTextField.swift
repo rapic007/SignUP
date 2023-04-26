@@ -11,6 +11,11 @@ final class CustomTextField: UITextField {
     
     private let button = UIButton()
     
+    init() {
+        super.init(frame: .zero)
+        setupTextField()
+    }
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         super .init(coder: coder)
@@ -54,6 +59,7 @@ final class CustomTextField: UITextField {
         leftViewMode = .always
         self.tintColor = .lightGray
     }
+    
     func setupRightSideButton() {
 
         

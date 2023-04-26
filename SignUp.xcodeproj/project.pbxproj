@@ -24,6 +24,7 @@
 		CBCB7B3429BA542300E5F34D /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCB7B3329BA542300E5F34D /* LoginScreen.swift */; };
 		CBCB7B3729BA561400E5F34D /* montserrat-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCB7B3629BA561400E5F34D /* montserrat-regular.ttf */; };
 		CBE9150F29E47AF300E53AF7 /* CreatingTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9150E29E47AF300E53AF7 /* CreatingTaskController.swift */; };
+		CBE9152329EA88AA00E53AF7 /* CreatingTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE9152229EA88AA00E53AF7 /* CreatingTaskCell.swift */; };
 		CBEAA6A329DB1E7A0046494E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAA6A229DB1E7A0046494E /* MainTabBarController.swift */; };
 		CBEAA6A529DB24EA0046494E /* CourseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAA6A429DB24EA0046494E /* CourseScreen.swift */; };
 		CBEAA6A729DB255C0046494E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEAA6A629DB255C0046494E /* ProfileScreen.swift */; };
@@ -51,6 +52,8 @@
 		CBCB7B3329BA542300E5F34D /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		CBCB7B3629BA561400E5F34D /* montserrat-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "montserrat-regular.ttf"; sourceTree = "<group>"; };
 		CBE9150E29E47AF300E53AF7 /* CreatingTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingTaskController.swift; sourceTree = "<group>"; };
+		CBE9152229EA88AA00E53AF7 /* CreatingTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingTaskCell.swift; sourceTree = "<group>"; };
+		CBE9152429EA9C4300E53AF7 /* lato-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-bold.ttf"; sourceTree = "<group>"; };
 		CBEAA6A229DB1E7A0046494E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CBEAA6A429DB24EA0046494E /* CourseScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseScreen.swift; sourceTree = "<group>"; };
 		CBEAA6A629DB255C0046494E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 				CBCB7B1F29BA53DB00E5F34D /* AppDelegate.swift */,
 				CBCB7B2129BA53DB00E5F34D /* SceneDelegate.swift */,
 				CBE9150E29E47AF300E53AF7 /* CreatingTaskController.swift */,
+				CBE9152229EA88AA00E53AF7 /* CreatingTaskCell.swift */,
 				CBCB7B2529BA53DB00E5F34D /* Main.storyboard */,
 				CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */,
 				CBCB7B2A29BA53DB00E5F34D /* LaunchScreen.storyboard */,
@@ -206,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */,
+				CBE9152429EA9C4300E53AF7 /* lato-bold.ttf */,
 				CBCB7B3629BA561400E5F34D /* montserrat-regular.ttf */,
 			);
 			path = Fonts;
@@ -290,6 +295,7 @@
 				CBE9150F29E47AF300E53AF7 /* CreatingTaskController.swift in Sources */,
 				CBEAA6A329DB1E7A0046494E /* MainTabBarController.swift in Sources */,
 				CB4CC90029DCA325002C9960 /* TaskTypeController.swift in Sources */,
+				CBE9152329EA88AA00E53AF7 /* CreatingTaskCell.swift in Sources */,
 				CB4CC8FB29DC84F4002C9960 /* DayCellModel.swift in Sources */,
 				CBEAA6A729DB255C0046494E /* ProfileScreen.swift in Sources */,
 				CBCB7B2029BA53DB00E5F34D /* AppDelegate.swift in Sources */,
