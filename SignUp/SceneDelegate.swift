@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        let vc = CreatingTaskController()
+        let vc = TaskCreateController()
         let ui = UINavigationController(rootViewController: vc)
         ui.modalPresentationStyle = .fullScreen
         

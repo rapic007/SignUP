@@ -1,23 +1,41 @@
 import UIKit
 
-class CreatingTaskController: UIViewController {
+class TaskCreateController: UIViewController {
     
     let tableView: UITableView = .init()
     
+    let models: [TaskCreateModel] = [
+        TaskCreateNameModel(title: "Название задачи"),
+        TaskCreatePeriodModel(title: "Периодичность выполнения"),
+        TaskCreateStartModel(title: "Начало выполнения"),
+        TaskCreateButtonModel(title: "Кнопка")
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureUI()
         setupScreen()
         setupTableView()
     
-        tableView.register(CreatingTaskCell.self, forCellReuseIdentifier: "FirstCellCreatingTask")
+        
+        
+    }
+    func configureUI() {
+        
+        tableView.register(TaskCreateNameCell.self, forCellReuseIdentifier: TaskCreateCellType.taskName.rawValue)
+        tableView.register(TaskCreatePeriodCell.self, forCellReuseIdentifier: TaskCreateCellType.repeatingPeriod.rawValue)
+        tableView.register(TaskCreateStartCell.self, forCellReuseIdentifier: TaskCreateCellType.start.rawValue)
+        tableView.register(TaskCreateButtonCell.self, forCellReuseIdentifier: TaskCreateCellType.createTask.rawValue)
+        
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.separatorStyle = .none
     }
     
     
     func setupScreen() {
-        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        
         title = "Создание новой задачи"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"chevron.backward"),
@@ -40,28 +58,31 @@ class CreatingTaskController: UIViewController {
     
 }
 
-extension CreatingTaskController: UITableViewDataSource {
+extension TaskCreateController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FirstCellCreatingTask",
-                                                       for: indexPath) as? CreatingTaskCell else { fatalError()}
-        return cell
+        
+        let model = models[indexPath.row]
+        let identifier = model.type.rawValue
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TaskCreateCell
+        cell.configure(model: model)
+        return cell as! UITableViewCell 
     }
     
 }
 
-extension CreatingTaskController: UITableViewDelegate {
+extension TaskCreateController: UITableViewDelegate {
     
 }
 
-extension CreatingTaskController {
+extension TaskCreateController {
     
     func setupTableView() {
         view.addSubview(tableView)
-
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

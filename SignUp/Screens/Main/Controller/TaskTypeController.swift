@@ -60,7 +60,7 @@ extension TaskTypeController: UITableViewDataSource {
 extension TaskTypeController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = CreatingTaskController()
+        let vc = TaskCreateController()
         let ui = UINavigationController(rootViewController: vc)
         ui.modalPresentationStyle = .fullScreen
         present(ui, animated: true)

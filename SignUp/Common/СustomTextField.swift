@@ -11,6 +11,8 @@ final class CustomTextField: UITextField {
     
     private let button = UIButton()
     
+    let datePicker = UIDatePicker()
+    
     init() {
         super.init(frame: .zero)
         setupTextField()
@@ -41,6 +43,7 @@ final class CustomTextField: UITextField {
         
         textColor = .black
         font = UIFont(name: "lato-regular", size: 16)
+        backgroundColor = .white
         heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         layer.masksToBounds = true
@@ -53,18 +56,17 @@ final class CustomTextField: UITextField {
     func setupLeftSideImage(ImageViewNamed: String) {
         let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: 24, height: 24))
         imageView.image = UIImage(named: ImageViewNamed)
+       
         let imageViewContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 44))
         imageViewContainerView.addSubview(imageView)
+        
         leftView = imageViewContainerView
         leftViewMode = .always
         self.tintColor = .lightGray
     }
     
     func setupRightSideButton() {
-
-        
         button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
-
         button.frame = CGRect(x: 0, y: 0, width: 65, height: 44)
         button.setTitle("Забыли?", for: .normal)
         button.titleLabel?.font = UIFont(name: "lato-regular", size: 16)
@@ -90,6 +92,27 @@ final class CustomTextField: UITextField {
         rightView = containerView
         rightViewMode = .always
     }
+    
+    func setupDatePicker() {
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneTapped))
+        let toolBar = UIToolbar()
+        
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())
+        datePicker.backgroundColor = .white
+        
+        doneButton.tintColor = .darkGray
+
+        toolBar.sizeToFit()
+        toolBar.setItems([doneButton], animated: true)
+        
+        padding = UIEdgeInsets(top: 0, left: 46, bottom: 0, right: 20)
+        backgroundColor = .white
+        setupLeftSideImage(ImageViewNamed: "calendar")
+        inputView = datePicker
+        inputAccessoryView = toolBar
+    }
         
     @objc
     func rightButtonTapped() {
@@ -99,6 +122,15 @@ final class CustomTextField: UITextField {
     @objc
     func eyeTapped() {
         isSecureTextEntry.toggle()
+    }
+    
+    @objc
+    func doneTapped() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+
+        text = dateFormatter.string(from: datePicker.date)
+        endEditing(true)
     }
     }
     

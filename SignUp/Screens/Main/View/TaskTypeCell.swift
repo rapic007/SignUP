@@ -5,15 +5,6 @@ class TaskTypeCell: UITableViewCell {
     
     let taskImage = UIImageView()
     let view = UIView()
-//    lazy var button: UIButton = {
-//        let button = UIButton()
-//        button.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
-//        button.setImage(UIImage(named: "newTaskButton"), for: .normal)
-//        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//
-//        return button
-//    }()
     var taskNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "lato-regular", size: 15)
@@ -49,7 +40,6 @@ class TaskTypeCell: UITableViewCell {
             view.layer.cornerRadius = 25
             
         }
-//        view.addSubview(button)
         NSLayoutConstraint.activate([
             taskImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             taskImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -70,9 +60,7 @@ class TaskTypeCell: UITableViewCell {
             view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
             view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            
-//            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            button.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+
 
         ])
     }
@@ -81,11 +69,5 @@ class TaskTypeCell: UITableViewCell {
         taskNameLabel.text = taskCell.taskName
         taskDescriptionLabel.text = taskCell.taskDescription
     }
-//
-//    @objc
-//    func buttonTapped() {
-//    print("f")
-//    }
-//
 }
 
