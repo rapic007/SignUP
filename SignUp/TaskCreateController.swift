@@ -1,13 +1,15 @@
 import UIKit
+import RealmSwift
 
 class TaskCreateController: UIViewController {
     
     let tableView: UITableView = .init()
+    var task: Results<Task>!
     
     let models: [TaskCreateModel] = [
         TaskCreateNameModel(title: "Название задачи"),
         TaskCreatePeriodModel(title: "Периодичность выполнения"),
-        TaskCreateStartModel(title: "Начало выполнения"),
+        TaskCreateStartModel(title: "Начало выполнения", titleTwo: "Конец выполнения"),
         TaskCreateButtonModel(title: "Кнопка")
     ]
     
@@ -93,3 +95,4 @@ extension TaskCreateController {
     }
     
 }
+// Добавить сюда кнопку

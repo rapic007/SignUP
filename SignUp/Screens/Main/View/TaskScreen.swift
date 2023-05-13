@@ -2,6 +2,8 @@ import UIKit
 
 class TaskScreen: UIViewController {
     
+    let tableView: UITableView = .init()
+    
     private let numbersSections = WorkWithDate.getData(daysCount: 4)
     
     lazy var collectionView: UICollectionView = {

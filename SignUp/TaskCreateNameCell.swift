@@ -26,8 +26,7 @@ class TaskCreateNameCell: UITableViewCell, TaskCreateCell {
     
     func configureUI() {
         taskNameLabel.text = model?.title
-        taskNameTextField.text = model?.taskName
-     
+        taskNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }
     
     func setupCell() {
@@ -58,5 +57,8 @@ class TaskCreateNameCell: UITableViewCell, TaskCreateCell {
             taskNameTextField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -32)
             
         ])
+    }
+    @objc func textFieldChanged() {
+        model?.taskName = taskNameTextField.text
     }
 }

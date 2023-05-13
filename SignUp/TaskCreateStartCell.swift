@@ -27,17 +27,16 @@ class TaskCreateStartCell: UITableViewCell, TaskCreateCell {
     
     func configureUI() {
         startLabel.text = model?.title
+        finishLabel.text = model?.titleTwo
     }
     
     func setupCell() {
         contentView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        
         startLabel.setupLabel(size: 13)
         
         startTextField.setupDatePicker()
         
         finishLabel.setupLabel(size: 13)
-        finishLabel.text = "Конец выполнения"
         
         finishTextField.setupDatePicker()
         
