@@ -32,12 +32,14 @@ class TaskTypeCell: UITableViewCell {
         contentView.addSubview(view)
         
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        view.layer.cornerRadius = 25
+        
         
         [taskImage, taskNameLabel, taskDescriptionLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
-            view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-            view.layer.cornerRadius = 25
+            
             
         }
         NSLayoutConstraint.activate([

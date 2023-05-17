@@ -1,15 +1,15 @@
 import UIKit
 
 class TaskCreateStartModel: TaskCreateModel {
-    let title: String
-    let titleTwo: String
+    let startTitle: String
+    let finishTitle: String
     
     var type: TaskCreateCellType {
         return .start
     }
     
-    init(title: String, titleTwo: String) {
-        self.title = title
-        self.titleTwo = titleTwo
+    init(startTitle: String, finishTitle: String) {
+        self.startTitle = startTitle
+        self.finishTitle = finishTitle
     }
 }

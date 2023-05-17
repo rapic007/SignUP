@@ -4,13 +4,12 @@ import RealmSwift
 class TaskCreateController: UIViewController {
     
     let tableView: UITableView = .init()
-    var task: Results<Task>!
+    let createButton = UIButton()
     
     let models: [TaskCreateModel] = [
         TaskCreateNameModel(title: "Название задачи"),
         TaskCreatePeriodModel(title: "Периодичность выполнения"),
-        TaskCreateStartModel(title: "Начало выполнения", titleTwo: "Конец выполнения"),
-        TaskCreateButtonModel(title: "Кнопка")
+        TaskCreateStartModel(startTitle: "Начало выполнения", finishTitle: "Конец выполнения"),
     ]
     
     override func viewDidLoad() {
@@ -19,9 +18,8 @@ class TaskCreateController: UIViewController {
         configureUI()
         setupScreen()
         setupTableView()
-    
-        
-        
+        setupButton()
+        saveNewTask()
     }
     func configureUI() {
         
@@ -51,6 +49,11 @@ class TaskCreateController: UIViewController {
         appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)]
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
+    }
+    
+    func saveNewTask() {
+        let newTask = Task(name: "123")
+        StorageManager.saveTask(newTask)
     }
     
     @objc
@@ -86,6 +89,7 @@ extension TaskCreateController {
     func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -93,6 +97,24 @@ extension TaskCreateController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    func setupButton() {
+        createButton.setTitle("Создать задачу", for: .normal)
+        createButton.titleLabel?.font = UIFont(name: "lato-regular", size: 15)
+        createButton.setTitleColor(.white, for: .normal)
+        createButton.setTitleColor(.lightGray, for: .highlighted)
+        createButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
+        createButton.layer.cornerRadius = 22
+        createButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.addSubview(createButton)
+        
+        NSLayoutConstraint.activate([
+            createButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            createButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            createButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
+            createButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
     
 }
-// Добавить сюда кнопку
+

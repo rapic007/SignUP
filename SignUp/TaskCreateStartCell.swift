@@ -26,8 +26,8 @@ class TaskCreateStartCell: UITableViewCell, TaskCreateCell {
     }
     
     func configureUI() {
-        startLabel.text = model?.title
-        finishLabel.text = model?.titleTwo
+        startLabel.text = model?.startTitle
+        finishLabel.text = model?.finishTitle
     }
     
     func setupCell() {

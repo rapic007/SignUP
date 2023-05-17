@@ -4,7 +4,10 @@ import UIKit
 class Task: Object {
     
     @objc dynamic var name = ""
-    @objc dynamic var imageData: Data?
-    @objc dynamic var type: String?
+    
+    convenience init(name: String = "") {
+        self.init()
+        self.name = name
+    }
 }
 
