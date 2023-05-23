@@ -206,7 +206,6 @@
 		CBCB7B1329BA53DB00E5F34D = {
 			isa = PBXGroup;
 			children = (
-				CBD297D82A155908002E9B38 /* StorageManager.swift */,
 				CBCB7B1E29BA53DB00E5F34D /* SignUp */,
 				CBCB7B1D29BA53DB00E5F34D /* Products */,
 			);
@@ -241,6 +240,7 @@
 				CBF14D3229FE4C8C0098A4CE /* TaskCreateController.swift */,
 				CBD297D62A152779002E9B38 /* TaskScreenTableCell.swift */,
 				CBD297D02A0E8481002E9B38 /* TaskCreateModel.swift */,
+				CBD297D82A155908002E9B38 /* StorageManager.swift */,
 				CBCB7B2529BA53DB00E5F34D /* Main.storyboard */,
 				CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */,
 				CBCB7B2A29BA53DB00E5F34D /* LaunchScreen.storyboard */,

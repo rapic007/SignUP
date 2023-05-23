@@ -19,7 +19,6 @@ class TaskCreateController: UIViewController {
         setupScreen()
         setupTableView()
         setupButton()
-        saveNewTask()
     }
     func configureUI() {
         
@@ -49,11 +48,6 @@ class TaskCreateController: UIViewController {
         appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)]
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
-    }
-    
-    func saveNewTask() {
-        let newTask = Task(name: "123")
-        StorageManager.saveTask(newTask)
     }
     
     @objc
@@ -105,8 +99,10 @@ extension TaskCreateController {
         createButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
         createButton.layer.cornerRadius = 22
         createButton.translatesAutoresizingMaskIntoConstraints = false
+        createButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         tableView.addSubview(createButton)
+        
         
         NSLayoutConstraint.activate([
             createButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -115,6 +111,17 @@ extension TaskCreateController {
             createButton.heightAnchor.constraint(equalToConstant: 44)
         ])
     }
-    
+    @objc
+    func buttonPressed() {
+        guard let nameModel = models[0] as? TaskCreateNameModel, let name = nameModel.taskName else {
+            return
+        }
+        let newTask = Task()
+        newTask.name = name
+        
+        StorageManager.saveTask(newTask)
+        
+        self.dismiss(animated: true)
+    }
 }
 

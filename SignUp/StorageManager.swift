@@ -10,5 +10,10 @@ class StorageManager {
             realm.add(task)
         }
     }
+    static func deleteTask(_ task: Task) {
+        try! realm.write{
+            realm.delete(task)
+        }
+    }
 }
 

@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
 
 
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 //        let vc = TaskCreateController()
         let vc = TaskScreen()
@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ui.modalPresentationStyle = .fullScreen
         
         
-//        window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "Start")
-        window?.rootViewController = ui
+        window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "Start")
+//        window?.rootViewController = ui
         window?.makeKeyAndVisible()
     
     }

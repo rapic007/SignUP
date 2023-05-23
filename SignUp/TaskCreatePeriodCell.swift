@@ -30,7 +30,6 @@ class TaskCreatePeriodCell: UITableViewCell, TaskCreateCell {
     
     func configureUI() {
         repeatingPeriodLabel.text = model?.title
-        model?.period = .everyDay
     }
     
     func setupCell() {
@@ -38,17 +37,18 @@ class TaskCreatePeriodCell: UITableViewCell, TaskCreateCell {
         
         repeatingPeriodLabel.setupLabel(size: 13)
         
-        everyDayView.labelAndButtonView(text: "Ежедневно")
-        onWeekdaysView.labelAndButtonView(text: "По будням")
-        monthlyView.labelAndButtonView(text: "Ежемесячно")
-        everyYearView.labelAndButtonView(text: "Ежегодно")
-        onceView.labelAndButtonView(text: "Один раз")
-        chooseDayView.labelAndButtonView(text: "Выбрать дни недели")
-        everyDayView.tag = 1
+        everyDayView.labelAndButtonView(text: "Ежедневно", tag: 1)
+        onWeekdaysView.labelAndButtonView(text: "По будням", tag: 2)
+        monthlyView.labelAndButtonView(text: "Ежемесячно", tag: 3)
+        everyYearView.labelAndButtonView(text: "Ежегодно", tag: 4)
+        onceView.labelAndButtonView(text: "Один раз", tag: 5)
+        chooseDayView.labelAndButtonView(text: "Выбрать дни недели", tag: 6)
+
 
         [repeatingPeriodLabel, everyDayView, onWeekdaysView, monthlyView, everyYearView, onceView, chooseDayView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
+          
 //            На каждую вюху повесить обработчик нажатий.
 //            + тег на каждую вьюшку
 //            В обработчике идет проверка нажатия кнопки. Кнопку узнаем по тегу

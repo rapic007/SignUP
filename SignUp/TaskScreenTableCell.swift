@@ -15,11 +15,11 @@ class TaskScreenTableCell: UITableViewCell {
     }
     
     func setupCell() {
-        
+        contentView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         contentView.addSubview(view)
         view.addSubview(nameLabel)
         view.backgroundColor = .white
-        view.layer.cornerRadius = 30
+        view.layer.cornerRadius = 16
         
         nameLabel.setupLabel(size: 15)
         
@@ -29,14 +29,15 @@ class TaskScreenTableCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20 ),
             view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            view.heightAnchor.constraint(equalToConstant: 60),
             
             nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 76),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 14),
-            nameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 30),
+            nameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
         ])
     }
 }
