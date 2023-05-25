@@ -25,6 +25,7 @@ class TaskCreateNameCell: UITableViewCell, TaskCreateCell {
     }
     
     func configureUI() {
+
         taskNameLabel.text = model?.title
         taskNameTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
     }

@@ -9,7 +9,7 @@ class TaskCreateController: UIViewController {
     let models: [TaskCreateModel] = [
         TaskCreateNameModel(title: "Название задачи"),
         TaskCreatePeriodModel(title: "Периодичность выполнения"),
-        TaskCreateStartModel(startTitle: "Начало выполнения", finishTitle: "Конец выполнения"),
+        TaskCreateStartFinishModel(startTitle: "Начало выполнения", finishTitle: "Конец выполнения"),
     ]
     
     override func viewDidLoad() {
@@ -24,8 +24,7 @@ class TaskCreateController: UIViewController {
         
         tableView.register(TaskCreateNameCell.self, forCellReuseIdentifier: TaskCreateCellType.taskName.rawValue)
         tableView.register(TaskCreatePeriodCell.self, forCellReuseIdentifier: TaskCreateCellType.repeatingPeriod.rawValue)
-        tableView.register(TaskCreateStartCell.self, forCellReuseIdentifier: TaskCreateCellType.start.rawValue)
-        tableView.register(TaskCreateButtonCell.self, forCellReuseIdentifier: TaskCreateCellType.createTask.rawValue)
+        tableView.register(TaskCreateStartFinishCell.self, forCellReuseIdentifier: TaskCreateCellType.start.rawValue)
         
         tableView.delegate = self
         tableView.dataSource = self

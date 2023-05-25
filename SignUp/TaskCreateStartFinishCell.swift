@@ -1,12 +1,12 @@
 import UIKit
 
-class TaskCreateStartCell: UITableViewCell, TaskCreateCell {
+class TaskCreateStartFinishCell: UITableViewCell, TaskCreateCell {
     let startLabel = CustomLabel()
     let startTextField = CustomTextField()
     let finishLabel = CustomLabel()
     let finishTextField = CustomTextField()
     
-    var model: TaskCreateStartModel?
+    var model: TaskCreateStartFinishModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -18,7 +18,7 @@ class TaskCreateStartCell: UITableViewCell, TaskCreateCell {
     }
     
     func configure(model: TaskCreateModel) {
-        guard let model = model as? TaskCreateStartModel else {
+        guard let model = model as? TaskCreateStartFinishModel else {
             return
         }
         self.model = model

@@ -4,7 +4,7 @@ class TaskTypeController: UIViewController {
 
     var taskCell = TasksType.fillSell()
     let tableView: UITableView = .init()
-    
+    var image = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,12 +59,34 @@ extension TaskTypeController: UITableViewDataSource {
 
 extension TaskTypeController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let vc = TaskCreateController()
-        let ui = UINavigationController(rootViewController: vc)
-        ui.modalPresentationStyle = .fullScreen
-        present(ui, animated: true)
-        
+        switch taskCell[indexPath.row].id {
+        case .onetimeTask:
+            let vc = TaskCreateController()
+            setupVc(vc: vc)
+            self.image = taskCell[indexPath.row].imageName!
+            
+        case .countRepeat:
+            let vc = CountRepeatingController()
+            setupVc(vc: vc)
+            
+        case .timer:
+            let vc = TimerController()
+            setupVc(vc: vc)
+            
+        case .text:
+            let vc = TextController()
+            setupVc(vc: vc)
+            
+        case .geolocation:
+            let vc = GeolocationController()
+            setupVc(vc: vc)
+        }
+        func setupVc(vc: UIViewController) {
+            let ui = UINavigationController(rootViewController: vc)
+            ui.modalPresentationStyle = .fullScreen
+            present(ui, animated: true)
+            
+        }
     }
 }
 

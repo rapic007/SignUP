@@ -1,6 +1,6 @@
 import UIKit
 
-class TaskCreateStartModel: TaskCreateModel {
+class TaskCreateStartFinishModel: TaskCreateModel {
     let startTitle: String
     let finishTitle: String
     

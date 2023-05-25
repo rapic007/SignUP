@@ -26,7 +26,6 @@ class TaskScreen: UIViewController {
         setupTableView()
         setupScreen()
         refreshTable()
-        tasks = realm.objects(Task.self)
     }
 
     private func setupScreen() {
@@ -65,6 +64,7 @@ class TaskScreen: UIViewController {
             newTaskButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
             
         ])
+        tasks = realm.objects(Task.self)
     }
     func refreshTable() {
         tableView.addSubview(refreshControl)
