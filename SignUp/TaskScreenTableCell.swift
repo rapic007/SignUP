@@ -3,7 +3,7 @@ import UIKit
 class TaskScreenTableCell: UITableViewCell {
     let view = UIView()
     let nameLabel = CustomLabel()
-    var imagef = UIImageView()
+    let image = UIImageView()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -18,13 +18,17 @@ class TaskScreenTableCell: UITableViewCell {
     func setupCell() {
         contentView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
         contentView.addSubview(view)
+        
         view.addSubview(nameLabel)
-        view.addSubview(imagef)
+        view.addSubview(image)
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
+        
         nameLabel.setupLabel(size: 15)
         
-        [nameLabel, view, imagef].forEach {
+        
+        
+        [nameLabel, view, image].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
@@ -40,10 +44,10 @@ class TaskScreenTableCell: UITableViewCell {
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 14),
             nameLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
             
-            imagef.topAnchor.constraint(equalTo: view.topAnchor),
-            imagef.rightAnchor.constraint(equalTo: nameLabel.leftAnchor, constant: -16),
-            imagef.leftAnchor.constraint(equalTo: view.leftAnchor),
-            imagef.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            image.topAnchor.constraint(equalTo: view.topAnchor),
+            image.rightAnchor.constraint(equalTo: nameLabel.leftAnchor, constant: -16),
+            image.leftAnchor.constraint(equalTo: view.leftAnchor),
+            image.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 }

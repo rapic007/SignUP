@@ -5,6 +5,7 @@ enum TaskCreateCellType: String {
     case repeatingPeriod
     case start
     case createTask
+    case timer
 }
 
 protocol TaskCreateModel {

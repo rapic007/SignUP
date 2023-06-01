@@ -4,6 +4,7 @@ class TaskCreateNameCell: UITableViewCell, TaskCreateCell {
     let taskNameLabel = CustomLabel()
     let taskNameTextField = CustomTextField()
     
+    
     var model: TaskCreateNameModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -1,10 +1,10 @@
 import UIKit
 import RealmSwift
 
-class TaskCreateController: UIViewController {
+class OneTimeController: CreatingNewTask {
     
     let tableView: UITableView = .init()
-    let createButton = UIButton()
+    let createButton = CustomButton()
     
     let models: [TaskCreateModel] = [
         TaskCreateNameModel(title: "Название задачи"),
@@ -16,7 +16,6 @@ class TaskCreateController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        setupScreen()
         setupTableView()
         setupButton()
     }
@@ -30,33 +29,9 @@ class TaskCreateController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
     }
-    
-    
-    func setupScreen() {
-        
-        title = "Создание новой задачи"
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"chevron.backward"),
-                                                           style:.plain,
-                                                           target: self,
-                                                           action: #selector(buttonTapped))
-        navigationController?.navigationBar.tintColor = .black
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)]
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactAppearance = appearance
-    }
-    
-    @objc
-    func buttonTapped() {
-        dismiss(animated: true)
-    }
-    
 }
 
-extension TaskCreateController: UITableViewDataSource {
+extension OneTimeController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
@@ -73,11 +48,11 @@ extension TaskCreateController: UITableViewDataSource {
     
 }
 
-extension TaskCreateController: UITableViewDelegate {
+extension OneTimeController: UITableViewDelegate {
     
 }
 
-extension TaskCreateController {
+extension OneTimeController {
     
     func setupTableView() {
         view.addSubview(tableView)
@@ -91,13 +66,7 @@ extension TaskCreateController {
         ])
     }
     func setupButton() {
-        createButton.setTitle("Создать задачу", for: .normal)
-        createButton.titleLabel?.font = UIFont(name: "lato-regular", size: 15)
-        createButton.setTitleColor(.white, for: .normal)
-        createButton.setTitleColor(.lightGray, for: .highlighted)
-        createButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
-        createButton.layer.cornerRadius = 22
-        createButton.translatesAutoresizingMaskIntoConstraints = false
+        createButton.setupButton()
         createButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         tableView.addSubview(createButton)
@@ -117,6 +86,7 @@ extension TaskCreateController {
         }
         let newTask = Task()
         newTask.name = name
+        newTask.imageNameData = UIImage(named: "onetimeTask")?.pngData()
         
         StorageManager.saveTask(newTask)
         

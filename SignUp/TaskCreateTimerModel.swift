@@ -1,15 +1,15 @@
 import UIKit
 
-class TaskCreateNameModel: TaskCreateModel {
+class TaskCreateTimerModel: TaskCreateModel {
     let title: String
-    var taskName: String?
+    
     
     var type: TaskCreateCellType {
-        return .taskName
+        .timer
     }
     
     init(title: String) {
         self.title = title
     }
-}
 
+}

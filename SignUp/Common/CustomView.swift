@@ -9,7 +9,7 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func labelAndButtonView(text: String, tag: Int) {
+    func labelAndButtonView(text: String) {
         let label = CustomLabel()
         let button = UIButton()
 
@@ -19,7 +19,6 @@ class CustomView: UIView {
         button.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
         button.setImage(UIImage(named: "emptyButton"), for: .normal)
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        button.tag = tag
         
         
         label.setupLabel(size: 15)

@@ -1,7 +1,7 @@
 import UIKit
 import RealmSwift
 
-class TaskScreen: UIViewController {
+class TaskScreenController: UIViewController {
     
     let tableView: UITableView = .init()
     var refreshControl = UIRefreshControl()
@@ -88,7 +88,7 @@ class TaskScreen: UIViewController {
     }
 }
 
-extension TaskScreen: UICollectionViewDataSource  {
+extension TaskScreenController: UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  numbersSections.count
     }
@@ -101,7 +101,7 @@ extension TaskScreen: UICollectionViewDataSource  {
         return cell
     }
 }
-extension TaskScreen: UITableViewDataSource {
+extension TaskScreenController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return tasks.isEmpty ? 0 : tasks.count
@@ -112,18 +112,21 @@ extension TaskScreen: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskScreenTableCell
 
         let task = tasks[indexPath.row]
+        
         cell.nameLabel.text = task.name
+        cell.image.image = UIImage(data: task.imageNameData!)
+        
         return cell
     }
     
     
 }
 
-extension TaskScreen: UITableViewDelegate {
+extension TaskScreenController: UITableViewDelegate {
     
 }
 
-extension TaskScreen {
+extension TaskScreenController {
     func setupTableView() {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -140,11 +143,24 @@ extension TaskScreen {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let task = tasks[indexPath.row]
-        let contextItem = UIContextualAction(style: .destructive, title: "Delete") {_,_,_ in
+        let customDelete = UIContextualAction(style: .destructive, title: nil) {_,_,_ in
             StorageManager.deleteTask(task)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [indexPath], with: .none)
         }
-        let swipeAction = UISwipeActionsConfiguration(actions: [contextItem])
+        
+        let customEdit = UIContextualAction(style: .normal, title: nil) { _, _, _ in
+            
+        }
+    
+        customEdit.image = UIGraphicsImageRenderer(size: CGSize(width: 24, height: 24)).image { _ in
+            UIImage(named: "edit")?.draw(in: CGRect(x: 0, y: 0, width: 24, height: 24))}
+        customEdit.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1)
+        
+        customDelete.image = UIGraphicsImageRenderer(size: CGSize(width: 24, height: 24)).image { _ in
+            UIImage(named: "trash")?.draw(in: CGRect(x: 0, y: 0, width: 24, height: 24))}
+        customDelete.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1)
+        
+        let swipeAction = UISwipeActionsConfiguration(actions: [customEdit,customDelete])
         
         return swipeAction
     }

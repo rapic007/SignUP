@@ -37,12 +37,12 @@ class TaskCreatePeriodCell: UITableViewCell, TaskCreateCell {
         
         repeatingPeriodLabel.setupLabel(size: 13)
         
-        everyDayView.labelAndButtonView(text: "Ежедневно", tag: 1)
-        onWeekdaysView.labelAndButtonView(text: "По будням", tag: 2)
-        monthlyView.labelAndButtonView(text: "Ежемесячно", tag: 3)
-        everyYearView.labelAndButtonView(text: "Ежегодно", tag: 4)
-        onceView.labelAndButtonView(text: "Один раз", tag: 5)
-        chooseDayView.labelAndButtonView(text: "Выбрать дни недели", tag: 6)
+        everyDayView.labelAndButtonView(text: "Ежедневно")
+        onWeekdaysView.labelAndButtonView(text: "По будням")
+        monthlyView.labelAndButtonView(text: "Ежемесячно")
+        everyYearView.labelAndButtonView(text: "Ежегодно")
+        onceView.labelAndButtonView(text: "Один раз")
+        chooseDayView.labelAndButtonView(text: "Выбрать дни недели")
 
 
         [repeatingPeriodLabel, everyDayView, onWeekdaysView, monthlyView, everyYearView, onceView, chooseDayView].forEach {

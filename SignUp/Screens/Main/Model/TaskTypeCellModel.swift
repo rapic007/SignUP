@@ -40,5 +40,4 @@ struct TasksType {
                   id: .geolocation)
         ]
     }
-
 }

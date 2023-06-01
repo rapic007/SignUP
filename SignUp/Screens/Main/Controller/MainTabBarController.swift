@@ -11,7 +11,7 @@ class MainTabBarController: UITabBarController {
     private func createTabBar() {
         viewControllers = [
  
-        setupVC(viewController: TaskScreen(), title: "Задачи", image: UIImage(named: "taskImage")),
+        setupVC(viewController: TaskScreenController(), title: "Задачи", image: UIImage(named: "taskImage")),
         setupVC(viewController: CourseScreen(), title: "Курсы", image: UIImage(named: "courseImage")),
         setupVC(viewController: ProfileScreen(), title: "Профиль", image: UIImage(named: "profileImage")),
             

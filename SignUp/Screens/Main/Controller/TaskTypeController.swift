@@ -4,17 +4,11 @@ class TaskTypeController: UIViewController {
 
     var taskCell = TasksType.fillSell()
     let tableView: UITableView = .init()
-    var image = UIImage()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        
-        tableView.register(TaskTypeCell.self, forCellReuseIdentifier: "TaskTypeCell")
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.separatorStyle = .none
     }
 
 }
@@ -61,9 +55,8 @@ extension TaskTypeController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch taskCell[indexPath.row].id {
         case .onetimeTask:
-            let vc = TaskCreateController()
+            let vc = OneTimeController()
             setupVc(vc: vc)
-            self.image = taskCell[indexPath.row].imageName!
             
         case .countRepeat:
             let vc = CountRepeatingController()
@@ -85,7 +78,6 @@ extension TaskTypeController: UITableViewDelegate {
             let ui = UINavigationController(rootViewController: vc)
             ui.modalPresentationStyle = .fullScreen
             present(ui, animated: true)
-            
         }
     }
 }
@@ -93,6 +85,13 @@ extension TaskTypeController: UITableViewDelegate {
 extension TaskTypeController {
     func setupTableView() {
         view.addSubview(tableView)
+        
+        tableView.register(TaskTypeCell.self, forCellReuseIdentifier: "TaskTypeCell")
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

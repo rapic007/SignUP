@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  SignUp
-//
-//  Created by Влад  on 9.03.23.
-//
-
 import UIKit
 
 @main
