@@ -4,7 +4,7 @@ class TaskScreenTableCell: UITableViewCell {
     let view = UIView()
     let nameLabel = CustomLabel()
     let image = UIImageView()
-    
+    let timerLabel = CustomLabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -21,14 +21,15 @@ class TaskScreenTableCell: UITableViewCell {
         
         view.addSubview(nameLabel)
         view.addSubview(image)
+        view.addSubview(timerLabel)
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
         
         nameLabel.setupLabel(size: 15)
+        timerLabel.setupLabel(size: 20)
+        timerLabel.text = "00:00"
         
-        
-        
-        [nameLabel, view, image].forEach {
+        [nameLabel, view, image, timerLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
@@ -48,6 +49,11 @@ class TaskScreenTableCell: UITableViewCell {
             image.rightAnchor.constraint(equalTo: nameLabel.leftAnchor, constant: -16),
             image.leftAnchor.constraint(equalTo: view.leftAnchor),
             image.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            timerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            timerLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 267),
+            timerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -6),
         ])
     }
 }

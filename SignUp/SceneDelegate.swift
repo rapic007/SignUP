@@ -14,16 +14,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
 
 
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 //        let vc = TaskCreateController()
-        let vc = TaskScreenController()
-        let ui = UINavigationController(rootViewController: vc)
-        ui.modalPresentationStyle = .fullScreen
+//        let vc = TaskScreenController()
+//        let ui = UINavigationController(rootViewController: vc)
+//        ui.modalPresentationStyle = .fullScreen
         
         
-//        window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "Start")
-        window?.rootViewController = ui
+        window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "Start")
+//        window?.rootViewController = ui
         window?.makeKeyAndVisible()
     
     }
