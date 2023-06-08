@@ -116,7 +116,12 @@ extension TaskScreenController: UITableViewDataSource {
         
         cell.nameLabel.text = task.name
         cell.image.image = UIImage(data: task.imageNameData!)
-        
+        if cell.image.image?.pngData() == UIImage(named: "timer")?.pngData() {
+            cell.timerLabel.text = "aa"
+        }
+        else {
+            cell.timerLabel.text = nil
+        }
         return cell
     }
     
