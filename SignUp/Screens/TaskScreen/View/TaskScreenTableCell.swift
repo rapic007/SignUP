@@ -14,6 +14,10 @@ class TaskScreenTableCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        timerLabel.text = ""
+    }
     
     func setupCell() {
         contentView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -27,8 +31,6 @@ class TaskScreenTableCell: UITableViewCell {
         
         nameLabel.setupLabel(size: 15)
         timerLabel.setupLabel(size: 20)
-        timerLabel.text = "00:00"
-        
         [nameLabel, view, image, timerLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -52,7 +54,7 @@ class TaskScreenTableCell: UITableViewCell {
             
             timerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
             timerLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 267),
+            timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 230),
             timerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -6),
         ])
     }

@@ -1,6 +1,6 @@
 import UIKit
 
-struct WorkWithDate {
+struct DayController {
     
     static func getData(daysCount: Int) -> [DayCellModel] {
         var result = [DayCellModel]()

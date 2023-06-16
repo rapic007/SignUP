@@ -1,13 +1,14 @@
 import UIKit
-import RealmSwift
+import Realm
 
-class OneTimeController: CreatingNewTask {
+class TimerController: CreatingNewTask {
     
     let tableView: UITableView = .init()
     let createButton = CustomButton()
     
     let models: [TaskCreateModel] = [
         TaskCreateNameModel(title: "Название задачи"),
+        TaskCreateTimerModel(title: "Длительность выполнения задачи"),
         TaskCreatePeriodModel(title: "Периодичность выполнения"),
         TaskCreateStartFinishModel(startTitle: "Начало выполнения", finishTitle: "Конец выполнения"),
     ]
@@ -24,6 +25,7 @@ class OneTimeController: CreatingNewTask {
         tableView.register(TaskCreateNameCell.self, forCellReuseIdentifier: TaskCreateCellType.taskName.rawValue)
         tableView.register(TaskCreatePeriodCell.self, forCellReuseIdentifier: TaskCreateCellType.repeatingPeriod.rawValue)
         tableView.register(TaskCreateStartFinishCell.self, forCellReuseIdentifier: TaskCreateCellType.start.rawValue)
+        tableView.register(TaskCreateTimerCell.self, forCellReuseIdentifier: TaskCreateCellType.timer.rawValue)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -31,7 +33,7 @@ class OneTimeController: CreatingNewTask {
     }
 }
 
-extension OneTimeController: UITableViewDataSource {
+extension TimerController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
@@ -43,16 +45,16 @@ extension OneTimeController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TaskCreateCell
         cell.configure(model: model)
-        return cell as! UITableViewCell 
+        return cell as! UITableViewCell
     }
     
 }
 
-extension OneTimeController: UITableViewDelegate {
+extension TimerController: UITableViewDelegate {
     
 }
 
-extension OneTimeController {
+extension TimerController {
     
     func setupTableView() {
         view.addSubview(tableView)
@@ -86,11 +88,11 @@ extension OneTimeController {
         }
         let newTask = Task()
         newTask.name = name
-        newTask.imageNameData = UIImage(named: "onetimeTask")?.pngData()
+        newTask.imageNameData = UIImage(named: "timer")?.pngData()
+        newTask.addTimer = "Yes"
         
         StorageManager.saveTask(newTask)
         
         self.dismiss(animated: true)
     }
 }
-
