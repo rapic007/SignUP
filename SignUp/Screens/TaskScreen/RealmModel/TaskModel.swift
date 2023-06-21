@@ -9,11 +9,12 @@ enum TaskStatus: String, PersistableEnum {
 
 class Task: Object {
     
-    @objc dynamic var name = ""
+    @Persisted var name = ""
 //    @objc dynamic var ellapsed: Int = 0
 //    @objc dynamic var status: TaskStatus = .notStarted
-    @objc dynamic var imageNameData: Data?
-    @objc dynamic var addTimer = ""
+    @Persisted var imageNameData: Data?
+    @Persisted var addTimer: Bool?
+    @Persisted var startTick: Int = 0 
 }
 
-
+var objectNotificationToken: NotificationToken?

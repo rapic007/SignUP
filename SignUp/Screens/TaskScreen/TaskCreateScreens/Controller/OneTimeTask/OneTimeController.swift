@@ -87,7 +87,6 @@ extension OneTimeController {
         let newTask = Task()
         newTask.name = name
         newTask.imageNameData = UIImage(named: "onetimeTask")?.pngData()
-        newTask.addTimer = "No"
         
         StorageManager.saveTask(newTask)
         

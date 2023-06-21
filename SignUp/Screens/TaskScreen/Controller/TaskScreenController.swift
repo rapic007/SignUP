@@ -6,11 +6,7 @@ class TaskScreenController: UIViewController {
     let tableView: UITableView = .init()
     var refreshControl = UIRefreshControl()
     var tasks: Results<Task>!
-    var timerState = false
-    var timer: Timer?
-    var time = ""
-    var tick = 0
-    var updateLabel : [((String) -> Void)] = []
+
     
     private let numbersSections = DayController.getData(daysCount: 4)
     
@@ -88,7 +84,7 @@ class TaskScreenController: UIViewController {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
-            self.updateLabel = []
+            
         }
     }
 }
@@ -120,13 +116,13 @@ extension TaskScreenController: UITableViewDataSource {
       
         cell.nameLabel.text = task.name
         cell.image.image = UIImage(data: task.imageNameData!)
+        cell.tick = task.startTick
         
-        if task.addTimer == "Yes" {
-            cell.timerLabel.text = "Tap"
-            let update: ((String) -> Void) = {value in
+        if task.addTimer == true {
+            
+            cell.updateLabel = {value in
                 cell.timerLabel.text = value
             }
-            updateLabel.append(update)
         }
         
         return cell
@@ -142,15 +138,16 @@ extension TaskScreenController: UITableViewDelegate {
       }
         let task = tasks[indexPath.row]
         
-        if task.addTimer == "Yes" {
-            if timerState == false {
-                cancelTimer()
-                cell.timerLabel.text = "Go"
-                timerState.toggle()
-            }
-            else {
-                createTimer()
-                timerState.toggle()
+        if task.addTimer == true {
+            if cell.timerState == false {
+                try! realm.write {
+                    task.startTick = cell.tick
+                }
+                cell.cancelTimer()
+                cell.timerState.toggle()
+            } else {
+                cell.createTimer()
+                cell.timerState.toggle()
             }
         }
     }
@@ -194,39 +191,12 @@ extension TaskScreenController {
         
         return swipeAction
     }
-}
-extension TaskScreenController {
-    func cancelTimer() {
-        timer?.invalidate()
-    }
     
-    func createTimer() {
-        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
-        self.timer = timer
-        RunLoop.current.add(timer, forMode: .common)
-        timer.tolerance = 0.1
-    }
-    
-    @objc func timerTick() {
-        let time = secondsToHoursMinutesSeconds(seconds: tick)
-        let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
-        tick += 1
-        updateLabel.forEach { update in
-            update(timeString)
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? TaskScreenTableCell else {
+            return
         }
-        
-        func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
-            return ((seconds / 3600), ((seconds % 3600) / 60),((seconds % 3600) % 60))
-        }
-        
-        func makeTimeString(hours: Int, minutes: Int, seconds : Int) -> String {
-            var timeString = ""
-            timeString += String(format: "%02d", hours)
-            timeString += ":"
-            timeString += String(format: "%02d", minutes)
-            timeString += ":"
-            timeString += String(format: "%02d", seconds)
-            return timeString
-        }
+        cell.updateLabel = nil
     }
 }
+

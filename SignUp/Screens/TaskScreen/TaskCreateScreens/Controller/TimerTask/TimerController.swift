@@ -89,7 +89,8 @@ extension TimerController {
         let newTask = Task()
         newTask.name = name
         newTask.imageNameData = UIImage(named: "timer")?.pngData()
-        newTask.addTimer = "Yes"
+        newTask.addTimer = true
+        newTask.startTick = 0
         
         StorageManager.saveTask(newTask)
         

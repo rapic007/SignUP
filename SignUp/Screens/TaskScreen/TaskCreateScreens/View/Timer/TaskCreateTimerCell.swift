@@ -51,7 +51,6 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
         }
-        
         NSLayoutConstraint.activate([
             
             taskDurationLabel.topAnchor.constraint(equalTo: contentView.topAnchor),

@@ -5,6 +5,12 @@ class TaskScreenTableCell: UITableViewCell {
     let nameLabel = CustomLabel()
     let image = UIImageView()
     let timerLabel = CustomLabel()
+    let taskInfoLabel = CustomLabel()
+    
+    var timerState = true
+    var timer: Timer?
+    var tick = 0
+    var updateLabel : ((String) -> Void)? 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,12 +32,17 @@ class TaskScreenTableCell: UITableViewCell {
         view.addSubview(nameLabel)
         view.addSubview(image)
         view.addSubview(timerLabel)
+        view.addSubview(taskInfoLabel)
+        taskInfoLabel.text = "24x 60m 60c"
+        
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
         
         nameLabel.setupLabel(size: 15)
         timerLabel.setupLabel(size: 20)
-        [nameLabel, view, image, timerLabel].forEach {
+        taskInfoLabel.setupLabel(size: 13)
+        
+        [nameLabel, view, image, timerLabel, taskInfoLabel].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
@@ -56,6 +67,46 @@ class TaskScreenTableCell: UITableViewCell {
             timerLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             timerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 230),
             timerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -6),
+            
+            taskInfoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
+            taskInfoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -11),
+            taskInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 142),
+            taskInfoLabel.widthAnchor.constraint(equalToConstant: 100),
         ])
     }
 }
+extension TaskScreenTableCell {
+    func cancelTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func createTimer() {
+        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
+        self.timer = timer
+        RunLoop.current.add(timer, forMode: .common)
+        timer.tolerance = 0.1
+    }
+    
+    @objc func timerTick() {
+        let time = secondsToHoursMinutesSeconds(seconds: tick)
+        let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
+        tick += 1
+        updateLabel?(timeString)
+        }
+        
+        func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
+            return ((seconds / 3600), ((seconds % 3600) / 60),((seconds % 3600) % 60))
+        }
+        
+        func makeTimeString(hours: Int, minutes: Int, seconds : Int) -> String {
+            var timeString = ""
+            timeString += String(format: "%02d", hours)
+            timeString += ":"
+            timeString += String(format: "%02d", minutes)
+            timeString += ":"
+            timeString += String(format: "%02d", seconds)
+            return timeString
+        }
+    }
+
