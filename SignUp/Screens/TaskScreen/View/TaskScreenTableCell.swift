@@ -7,10 +7,10 @@ class TaskScreenTableCell: UITableViewCell {
     let timerLabel = CustomLabel()
     let taskInfoLabel = CustomLabel()
     
-    var timerState = true
-    var timer: Timer?
-    var tick = 0
-    var updateLabel : ((String) -> Void)? 
+//    var timerState = true
+//    var timer: Timer?
+//    var tick = 0
+//    var updateLabel : ((String) -> Void)? 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,6 +23,7 @@ class TaskScreenTableCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         timerLabel.text = ""
+        updateTick(tick: 0)
     }
     
     func setupCell() {
@@ -76,37 +77,26 @@ class TaskScreenTableCell: UITableViewCell {
     }
 }
 extension TaskScreenTableCell {
-    func cancelTimer() {
-        timer?.invalidate()
-        timer = nil
-    }
-    
-    func createTimer() {
-        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerTick), userInfo: nil, repeats: true)
-        self.timer = timer
-        RunLoop.current.add(timer, forMode: .common)
-        timer.tolerance = 0.1
-    }
-    
-    @objc func timerTick() {
+    func updateTick(tick: Int) {
         let time = secondsToHoursMinutesSeconds(seconds: tick)
         let timeString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
-        tick += 1
-        updateLabel?(timeString)
-        }
-        
-        func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
-            return ((seconds / 3600), ((seconds % 3600) / 60),((seconds % 3600) % 60))
-        }
-        
-        func makeTimeString(hours: Int, minutes: Int, seconds : Int) -> String {
-            var timeString = ""
-            timeString += String(format: "%02d", hours)
-            timeString += ":"
-            timeString += String(format: "%02d", minutes)
-            timeString += ":"
-            timeString += String(format: "%02d", seconds)
-            return timeString
+        if tick != 0 {
+            timerLabel.text = timeString
         }
     }
+
+    func secondsToHoursMinutesSeconds(seconds: Int) -> (Int, Int, Int) {
+        return ((seconds / 3600), ((seconds % 3600) / 60),((seconds % 3600) % 60))
+    }
+
+    func makeTimeString(hours: Int, minutes: Int, seconds : Int) -> String {
+        var timeString = ""
+        timeString += String(format: "%02d", hours)
+        timeString += ":"
+        timeString += String(format: "%02d", minutes)
+        timeString += ":"
+        timeString += String(format: "%02d", seconds)
+        return timeString
+    }
+}
 

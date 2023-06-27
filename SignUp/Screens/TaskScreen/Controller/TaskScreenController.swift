@@ -7,8 +7,12 @@ class TaskScreenController: UIViewController {
     var refreshControl = UIRefreshControl()
     var tasks: Results<Task>!
 
-    
+    private let timerService = TimerService()
     private let numbersSections = DayController.getData(daysCount: 4)
+    
+    deinit {
+        timerService.clear()
+    }
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +32,6 @@ class TaskScreenController: UIViewController {
         refreshTable()
     }
     private func setupScreen() {
-        
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -81,10 +84,10 @@ class TaskScreenController: UIViewController {
     }
     @objc
     func refresh(send: UIRefreshControl) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-            
+        DispatchQueue.main.async { [weak self] in
+            self?.timerService.clear()
+            self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
         }
     }
 }
@@ -111,23 +114,37 @@ extension TaskScreenController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TaskScreenTableCell
-
         let task = tasks[indexPath.row]
       
         cell.nameLabel.text = task.name
         cell.image.image = UIImage(data: task.imageNameData!)
-        cell.tick = task.startTick
         
         if task.addTimer == true {
-            
-            cell.updateLabel = {value in
-                cell.timerLabel.text = value
+            switch task.status {
+            case .inProgress:
+                addListener(task: task) { tick in
+                    cell.updateTick(tick: tick)
+                }
+            case .isPause:
+                cell.updateTick(tick: task.startTick)
             }
         }
         
         return cell
     }
-    
+    private func addListener(task: Task, completion: @escaping (Int) -> Void) {
+        timerService.addListener(name: task.name) {
+            let tick = task.startTick + 1
+            try! realm.write {
+                task.startTick = tick
+            }
+            completion(tick)
+        }
+    }
+
+    private func removeListener(task: Task) {
+        timerService.removeListener(name: task.name)
+    }
     
 }
 
@@ -139,15 +156,21 @@ extension TaskScreenController: UITableViewDelegate {
         let task = tasks[indexPath.row]
         
         if task.addTimer == true {
-            if cell.timerState == false {
-                try! realm.write {
-                    task.startTick = cell.tick
+            let newStatus: TaskStatus
+
+            switch task.status {
+            case .inProgress:
+                newStatus = .isPause
+                removeListener(task: task)
+
+            case .isPause:
+                newStatus = .inProgress
+                addListener(task: task) { tick in
+                    cell.updateTick(tick: tick)
                 }
-                cell.cancelTimer()
-                cell.timerState.toggle()
-            } else {
-                cell.createTimer()
-                cell.timerState.toggle()
+            }
+            try! realm.write {
+                task.status = newStatus
             }
         }
     }
@@ -170,13 +193,14 @@ extension TaskScreenController {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let task = tasks[indexPath.row]
+        
         let customDelete = UIContextualAction(style: .destructive, title: nil) {_,_,_ in
+            self.removeListener(task: task)
             StorageManager.deleteTask(task)
             tableView.deleteRows(at: [indexPath], with: .none)
         }
         
         let customEdit = UIContextualAction(style: .normal, title: nil) { _, _, _ in
-            
         }
     
         customEdit.image = UIGraphicsImageRenderer(size: CGSize(width: 24, height: 24)).image { _ in
@@ -190,13 +214,6 @@ extension TaskScreenController {
         let swipeAction = UISwipeActionsConfiguration(actions: [customEdit,customDelete])
         
         return swipeAction
-    }
-    
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TaskScreenTableCell else {
-            return
-        }
-        cell.updateLabel = nil
     }
 }
 

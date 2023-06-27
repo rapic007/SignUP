@@ -17,6 +17,7 @@
 		CB738EED2A27ABB1006E31C0 /* TaskCreateTimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB738EEC2A27ABB1006E31C0 /* TaskCreateTimerCell.swift */; };
 		CB89A0CF2A2286740093328C /* CreatingNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89A0CE2A2286740093328C /* CreatingNewTask.swift */; };
 		CB89A0D12A2289070093328C /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89A0D02A2289070093328C /* CustomButton.swift */; };
+		CBBCA8A92A44CE5200915486 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCA8A82A44CE5200915486 /* TimerService.swift */; };
 		CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDD13429BC79F8004443D4 /* СustomTextField.swift */; };
 		CBCAAA6129BCA7450056FB23 /* lato-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */; };
 		CBCAAA6329C0CAF40056FB23 /* RefreshPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */; };
@@ -64,6 +65,7 @@
 		CB738EEC2A27ABB1006E31C0 /* TaskCreateTimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateTimerCell.swift; sourceTree = "<group>"; };
 		CB89A0CE2A2286740093328C /* CreatingNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingNewTask.swift; sourceTree = "<group>"; };
 		CB89A0D02A2289070093328C /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CBBCA8A82A44CE5200915486 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		CBBDD13429BC79F8004443D4 /* СustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СustomTextField.swift"; sourceTree = "<group>"; };
 		CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-regular.ttf"; sourceTree = "<group>"; };
 		CBCAAA6229C0CAF40056FB23 /* RefreshPasswordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshPasswordScreen.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 		CB4CC8FE29DC97C7002C9960 /* Servicе */ = {
 			isa = PBXGroup;
 			children = (
+				CBBCA8A82A44CE5200915486 /* TimerService.swift */,
 			);
 			path = "Servicе";
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				CBF14D3329FE4C8C0098A4CE /* OneTimeController.swift in Sources */,
 				CB4CC8FB29DC84F4002C9960 /* DayCellModel.swift in Sources */,
 				CBEAA6A729DB255C0046494E /* ProfileScreen.swift in Sources */,
+				CBBCA8A92A44CE5200915486 /* TimerService.swift in Sources */,
 				CBF14D2929FC3F150098A4CE /* CustomLabel.swift in Sources */,
 				CBCB7B2029BA53DB00E5F34D /* AppDelegate.swift in Sources */,
 				CB24BA7E29DF310F006DA3F7 /* TaskTypeCellModel.swift in Sources */,
