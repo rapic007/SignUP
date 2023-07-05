@@ -31,6 +31,7 @@ class TaskScreenController: UIViewController {
         setupScreen()
         refreshTable()
     }
+    
     private func setupScreen() {
         
         tableView.dataSource = self
@@ -118,6 +119,8 @@ extension TaskScreenController: UITableViewDataSource {
       
         cell.nameLabel.text = task.name
         cell.image.image = UIImage(data: task.imageNameData!)
+        cell.taskInfoLabel.text = task.time
+        cell.timerLabel.text = task.startTimerLabel
         
         if task.addTimer == true {
             switch task.status {

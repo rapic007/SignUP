@@ -86,14 +86,24 @@ extension TimerController {
         guard let nameModel = models[0] as? TaskCreateNameModel, let name = nameModel.taskName else {
             return
         }
+        guard let timeModel = models[1] as? TaskCreateTimerModel, let time = timeModel.time else {
+            return
+        }
+        
         let newTask = Task()
         newTask.name = name
         newTask.imageNameData = UIImage(named: "timer")?.pngData()
         newTask.addTimer = true
         newTask.startTick = 0
+        newTask.time = time
+        newTask.startTimerLabel = "00:00:00"
         
         StorageManager.saveTask(newTask)
         
+        let controller = TaskScreenController()
+        controller.tableView.reloadData()
+        
         self.dismiss(animated: true)
+        
     }
 }

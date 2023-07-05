@@ -18,7 +18,6 @@ class TimerService {
 
     func clear() {
         tickListeners.removeAll()
-//        tickListeners = [:]
     }
 
     @objc func timerTick() {

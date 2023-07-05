@@ -4,13 +4,8 @@ class TaskScreenTableCell: UITableViewCell {
     let view = UIView()
     let nameLabel = CustomLabel()
     let image = UIImageView()
-    let timerLabel = CustomLabel()
+    var timerLabel = CustomLabel()
     let taskInfoLabel = CustomLabel()
-    
-//    var timerState = true
-//    var timer: Timer?
-//    var tick = 0
-//    var updateLabel : ((String) -> Void)? 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,7 +29,7 @@ class TaskScreenTableCell: UITableViewCell {
         view.addSubview(image)
         view.addSubview(timerLabel)
         view.addSubview(taskInfoLabel)
-        taskInfoLabel.text = "24x 60m 60c"
+        
         
         view.backgroundColor = .white
         view.layer.cornerRadius = 16
@@ -71,8 +66,8 @@ class TaskScreenTableCell: UITableViewCell {
             
             taskInfoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
             taskInfoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -11),
-            taskInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 142),
-            taskInfoLabel.widthAnchor.constraint(equalToConstant: 100),
+            taskInfoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 76),
+            taskInfoLabel.widthAnchor.constraint(equalToConstant: 120),
         ])
     }
 }

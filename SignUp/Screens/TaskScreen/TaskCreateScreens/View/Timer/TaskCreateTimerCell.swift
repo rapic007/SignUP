@@ -5,7 +5,10 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
     let hoursTextField = CustomTextField()
     let minutesTextField = CustomTextField()
     let secondsTextField = CustomTextField()
-
+    var time: (String, String, String) = ("", "", "")
+    
+    
+    
     var model: TaskCreateTimerModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -29,7 +32,9 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
     func configureUI() {
 
         taskDurationLabel.text = model?.title
-//        hoursTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        hoursTextField.addTarget(self, action: #selector(hoursTextFieldChanged), for: .editingChanged)
+        minutesTextField.addTarget(self, action: #selector(minutesTextFieldChanged), for: .editingChanged)
+        secondsTextField.addTarget(self, action: #selector(secondsTextFieldChanged), for: .editingChanged)
     }
     
     func setupCell() {
@@ -40,16 +45,21 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
         
         hoursTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         hoursTextField.placeholder = "0 час"
+        hoursTextField.keyboardType = .numberPad
         
         minutesTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         minutesTextField.placeholder = "0 мин"
+        minutesTextField.keyboardType = .numberPad
+        
         
         secondsTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         secondsTextField.placeholder = "0 сек"
+        secondsTextField.keyboardType = .numberPad
         
         [taskDurationLabel, hoursTextField, minutesTextField, secondsTextField].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview($0)
+            
         }
         NSLayoutConstraint.activate([
             
@@ -75,9 +85,68 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
             secondsTextField.widthAnchor.constraint(equalToConstant: 85)
         ])
     }
-    @objc func textFieldChanged() {
-//        model?.taskName = hoursTextField.text
+    @objc
+    func hoursTextFieldChanged() {
+        guard let hoursString = hoursTextField.text else {
+            return
+        }
+        guard let hoursInt = Int(hoursString) else {
+            return
+        }
+        
+        switch hoursInt {
+        case 1..<23:
+            time.0 = ("\(hoursInt) ч ")
+        case 24..<Int.max:
+            time.0 = "23 ч "
+        default:
+            time.0 = "0 ч "
+        }
+        let timeString = time.0 + time.1 + time.2
+        model?.time = timeString
     }
     
+    @objc
+    func minutesTextFieldChanged() {
+        
+            guard let minutesString = minutesTextField.text else {
+                return
+            }
+            guard let minutesInt = Int(minutesString) else {
+                return
+            }
+            
+            switch minutesInt {
+            case 1..<60:
+                time.1 = "\(minutesInt) мин "
+            case 60..<Int.max:
+                time.1 = "60 мин "
+            default:
+                time.1 = "0 мин "
+            }
+        let timeString = time.0 + time.1 + time.2
+        model?.time = timeString
+        }
+    @objc
+    func secondsTextFieldChanged() {
+        guard let secondsString = secondsTextField.text else {
+            return
+        }
+        guard let secondsInt = Int(secondsString) else {
+            return
+        }
+        
+        switch secondsInt {
+        case 1..<60:
+            time.2 = "\(secondsInt) сек"
+        case 60..<Int.max:
+            time.2 = "60 сек"
+        default:
+            time.2 = "0 сек"
+        }
+        let timeString = time.0 + time.1 + time.2
+        model?.time = timeString
+    }
 
 }
+
