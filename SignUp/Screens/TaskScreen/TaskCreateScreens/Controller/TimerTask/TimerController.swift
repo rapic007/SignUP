@@ -95,15 +95,13 @@ extension TimerController {
         newTask.imageNameData = UIImage(named: "timer")?.pngData()
         newTask.addTimer = true
         newTask.startTick = 0
-        newTask.time = time
+        newTask.taskInfo = time
         newTask.startTimerLabel = "00:00:00"
         
         StorageManager.saveTask(newTask)
         
-        let controller = TaskScreenController()
-        controller.tableView.reloadData()
-        
         self.dismiss(animated: true)
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
     }
 }

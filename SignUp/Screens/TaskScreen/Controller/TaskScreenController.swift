@@ -31,7 +31,6 @@ class TaskScreenController: UIViewController {
         setupScreen()
         refreshTable()
     }
-    
     private func setupScreen() {
         
         tableView.dataSource = self
@@ -74,6 +73,8 @@ class TaskScreenController: UIViewController {
         tableView.addSubview(refreshControl)
         
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: Notification.Name("reload"), object: nil)
     }
     
     @objc
@@ -90,6 +91,10 @@ class TaskScreenController: UIViewController {
             self?.tableView.reloadData()
             self?.refreshControl.endRefreshing()
         }
+    }
+    @objc
+    func reloadTable(notification: NSNotification) {
+        self.tableView.reloadData()
     }
 }
 
@@ -119,7 +124,7 @@ extension TaskScreenController: UITableViewDataSource {
       
         cell.nameLabel.text = task.name
         cell.image.image = UIImage(data: task.imageNameData!)
-        cell.taskInfoLabel.text = task.time
+        cell.taskInfoLabel.text = task.taskInfo
         cell.timerLabel.text = task.startTimerLabel
         
         if task.addTimer == true {

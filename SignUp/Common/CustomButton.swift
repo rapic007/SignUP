@@ -19,4 +19,9 @@ class CustomButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
 
     }
+    
+    func smallButton(imageName: String) {
+        frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        setImage(UIImage(named: imageName), for: .normal)
+    }
 }

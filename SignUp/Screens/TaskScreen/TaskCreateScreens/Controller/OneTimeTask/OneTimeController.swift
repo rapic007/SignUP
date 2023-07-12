@@ -45,7 +45,6 @@ extension OneTimeController: UITableViewDataSource {
         cell.configure(model: model)
         return cell as! UITableViewCell 
     }
-    
 }
 
 extension OneTimeController: UITableViewDelegate {
@@ -91,6 +90,8 @@ extension OneTimeController {
         StorageManager.saveTask(newTask)
         
         self.dismiss(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload"), object: nil)
+
     }
 }
 

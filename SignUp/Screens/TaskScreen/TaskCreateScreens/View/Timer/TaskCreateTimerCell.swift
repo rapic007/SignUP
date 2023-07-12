@@ -7,8 +7,6 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
     let secondsTextField = CustomTextField()
     var time: (String, String, String) = ("", "", "")
     
-    
-    
     var model: TaskCreateTimerModel?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
