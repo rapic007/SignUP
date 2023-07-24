@@ -116,7 +116,5 @@ class LoginScreen: UIViewController {
         let vc =  storyboard.instantiateViewController(withIdentifier: "TaskScreen")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
-        
     }
-        
-    }
+}

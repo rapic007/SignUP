@@ -195,6 +195,7 @@
 		CB4CC8F129DC8361002C9960 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				CBFFDB1A2A6EE83400BFBAC9 /* RegistrationScreen */,
 				CB4CC8F529DC842F002C9960 /* NewPasswordScreen */,
 				CB4CC8F429DC8411002C9960 /* RefreshPasswordScreen */,
 				CB4CC8F229DC8377002C9960 /* LoginScreen */,
@@ -540,6 +541,37 @@
 				CBE1A5F92A5B1863002B5DBF /* TaskCreateAmountCell.swift */,
 			);
 			path = Amount;
+			sourceTree = "<group>";
+		};
+		CBFFDB1A2A6EE83400BFBAC9 /* RegistrationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CBFFDB1B2A6EE86D00BFBAC9 /* Model */,
+				CBFFDB1C2A6EE87400BFBAC9 /* View */,
+				CBFFDB1D2A6EE88200BFBAC9 /* Controller */,
+			);
+			path = RegistrationScreen;
+			sourceTree = "<group>";
+		};
+		CBFFDB1B2A6EE86D00BFBAC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBFFDB1C2A6EE87400BFBAC9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBFFDB1D2A6EE88200BFBAC9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

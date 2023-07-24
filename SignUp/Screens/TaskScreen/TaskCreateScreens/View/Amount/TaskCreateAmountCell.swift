@@ -39,7 +39,8 @@ class TaskCreateAmountCell: UITableViewCell, TaskCreateCell {
         amountTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         amountTextField.placeholder = "0"
         amountTextField.keyboardType = .numberPad
-        amountTextField.addTarget(self, action: #selector(amountTextFieldChanged), for: .editingChanged)
+        amountTextField.isCanPaste = false
+        amountTextField.addTarget(self, action: #selector(amountTextFieldChanged), for: .editingDidEnd)
         
         plusButton.smallButton(imageName: "plus")
         minusButton.smallButton(imageName: "minus")

@@ -36,9 +36,11 @@ final class CustomTextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         bounds.inset(by: padding)
     }
+    var isCanPaste: Bool = true
+    
     override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if action == #selector(UIResponderStandardEditActions.paste(_:)) {
-            return false
+            return isCanPaste
         }
         return super.canPerformAction(action, withSender: sender)
     }

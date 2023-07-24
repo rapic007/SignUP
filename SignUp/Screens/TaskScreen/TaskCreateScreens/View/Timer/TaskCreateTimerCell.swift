@@ -44,15 +44,17 @@ class TaskCreateTimerCell: UITableViewCell, TaskCreateCell {
         hoursTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         hoursTextField.placeholder = "0 час"
         hoursTextField.keyboardType = .numberPad
+        hoursTextField.isCanPaste = false
         
         minutesTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         minutesTextField.placeholder = "0 мин"
         minutesTextField.keyboardType = .numberPad
-        
+        secondsTextField.isCanPaste = false
         
         secondsTextField.padding = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 10)
         secondsTextField.placeholder = "0 сек"
         secondsTextField.keyboardType = .numberPad
+        secondsTextField.isCanPaste = false
         
         [taskDurationLabel, hoursTextField, minutesTextField, secondsTextField].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
