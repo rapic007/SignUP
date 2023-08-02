@@ -3,6 +3,7 @@ import UIKit
 class CustomButton: UIButton {
     init() {
         super.init(frame: .zero)
+        setupButton()
     }
     
     required init?(coder: NSCoder) {

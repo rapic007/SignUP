@@ -68,7 +68,6 @@ extension TimerController {
         ])
     }
     func setupButton() {
-        createButton.setupButton()
         createButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         tableView.addSubview(createButton)

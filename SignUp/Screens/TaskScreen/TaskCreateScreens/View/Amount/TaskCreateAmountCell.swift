@@ -40,10 +40,12 @@ class TaskCreateAmountCell: UITableViewCell, TaskCreateCell {
         amountTextField.placeholder = "0"
         amountTextField.keyboardType = .numberPad
         amountTextField.isCanPaste = false
-        amountTextField.addTarget(self, action: #selector(amountTextFieldChanged), for: .editingDidEnd)
+        amountTextField.addTarget(self, action: #selector(amountTextFieldChanged), for: .editingChanged)
         
         plusButton.smallButton(imageName: "plus")
         minusButton.smallButton(imageName: "minus")
+        plusButton.layer.backgroundColor = .none
+        minusButton.layer.backgroundColor = .none
         plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
         minusButton.addTarget(self, action: #selector(minusButtonTapped), for: .touchUpInside)
         
@@ -81,6 +83,7 @@ class TaskCreateAmountCell: UITableViewCell, TaskCreateCell {
         counter = intText
         counter += 1
         amountTextField.text = String(counter)
+        amountTextFieldChanged()
         
     }
     @objc
@@ -95,6 +98,7 @@ class TaskCreateAmountCell: UITableViewCell, TaskCreateCell {
         }
         
         amountTextField.text = String(counter)
+        amountTextFieldChanged()
     }
     @objc
     func amountTextFieldChanged() {

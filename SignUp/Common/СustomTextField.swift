@@ -89,6 +89,9 @@ final class CustomTextField: UITextField {
         
     }
     func eyeButton() {
+        textContentType = .oneTimeCode
+        isSecureTextEntry = true
+
         button.frame = CGRect(x: -5, y: 0, width: 24, height: 24)
         button.setImage(UIImage(named: "eyeImage"), for: .normal)
         button.tintColor = .lightGray

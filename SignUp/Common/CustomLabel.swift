@@ -14,4 +14,9 @@ final class CustomLabel: UILabel {
         textColor = UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)
     }
     
+    func setupBigLabel(size: CGFloat) {
+        textColor = UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1)
+        font = UIFont(name: "montserrat-regular", size: size)
+    }
+    
 }

@@ -47,12 +47,10 @@ class NewPasswordScreen: UIViewController {
         
         PasswordTF.placeholder = "Придумайте пароль"
         PasswordTF.padding = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 50)
-        PasswordTF.isSecureTextEntry = true
         PasswordTF.eyeButton()
         
         repeatPasswordTF.placeholder = "Повторите пароль"
         repeatPasswordTF.padding = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 50)
-        repeatPasswordTF.isSecureTextEntry = true
         repeatPasswordTF.eyeButton()
         
         

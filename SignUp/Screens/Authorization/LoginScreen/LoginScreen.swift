@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginScreen: UIViewController {
+class LoginScreen: UIViewController, UITextViewDelegate {
     
     @IBOutlet var mainImage: UIImageView!
     
@@ -12,8 +12,6 @@ class LoginScreen: UIViewController {
     
     @IBOutlet var loginButton: UIButton!
     
-    @IBOutlet var registrationLabel: UILabel!
-    
     @IBOutlet var orLabel: UILabel!
     
     @IBOutlet var googleImage: UIImageView!
@@ -22,10 +20,13 @@ class LoginScreen: UIViewController {
     
     @IBOutlet var continueLabel: UILabel!
     
+    let userAgreementInfoTextView = UITextView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screenSettings()
-        
+        setupTextView()
+        setupRegistrationLabel()
     }
     
     func screenSettings() {
@@ -51,7 +52,6 @@ class LoginScreen: UIViewController {
         emailTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 50)
         emailTextField.setupLeftSideImage(ImageViewNamed: "emailImage")
         
-        
         //MARK: PasswordTF Properties
         
         passwordTextField.placeholder = "Введите пароль"
@@ -65,8 +65,6 @@ class LoginScreen: UIViewController {
             self?.present(vc, animated: true)
         }
         
-       
-        
         //MARK: LoginButton Properties
         
         loginButton.setTitle("Войти", for: .normal)
@@ -76,23 +74,6 @@ class LoginScreen: UIViewController {
         loginButton.layer.backgroundColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1).cgColor
         loginButton.layer.cornerRadius = 22
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
-        
-        //MARK: registrationLabel Properties
-        
-        registrationLabel.textAlignment = .center
-
-        let noAccountAttributes: [NSAttributedString.Key : Any] = [ NSAttributedString.Key.foregroundColor: UIColor(red: 0.208, green: 0.208, blue: 0.208, alpha: 1), NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!]
-       
-        let registrationAttributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1), NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!]
-        let registrationAddAttr = NSAttributedString(string: "Зарегистрироваться", attributes: registrationAttributes)
-        
-        
-        let noAccountaddAtrr = NSMutableAttributedString(string: "Нет аккаунта? ", attributes: noAccountAttributes)
-        noAccountaddAtrr.append( registrationAddAttr)
-        
-        registrationLabel.attributedText = noAccountaddAtrr
-        
         
         //MARK: orLabel Properties
         
@@ -107,9 +88,20 @@ class LoginScreen: UIViewController {
         continueLabel.font = UIFont(name: "lato-regular", size: 15)
         continueLabel.textAlignment = .center
         continueLabel.text = "Продолжить без регистрации"
-        
-      
     }
+    
+    func setupTextView() {
+        
+        view.addSubview(userAgreementInfoTextView)
+        userAgreementInfoTextView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            userAgreementInfoTextView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
+            userAgreementInfoTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            userAgreementInfoTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            userAgreementInfoTextView.heightAnchor.constraint(equalToConstant: 30),
+        ])
+    }
+    
     @objc
     func loginButtonTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -117,4 +109,49 @@ class LoginScreen: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
+    
+    @objc
+    func handleTap(recognizer: UITapGestureRecognizer) {
+        let vc = RegistrationViewController()
+        let ui = UINavigationController(rootViewController: vc)
+        ui.modalPresentationStyle = .fullScreen
+        present(ui, animated: true)
+    }
+
+    private func setupRegistrationLabel() {
+        
+        let noAccountAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!,
+        ]
+        
+        let registrationAttributes: [NSAttributedString.Key : Any] = [
+            NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!,
+            NSAttributedString.Key.link: URL(string: "registration")!
+        ]
+        
+        let noAccountString = NSMutableAttributedString(string: "Нет аккаунта? ", attributes: noAccountAttributes)
+        let registration = NSMutableAttributedString(string:"Зарегистрироваться", attributes: registrationAttributes)
+        
+        let fullAttributedString = NSMutableAttributedString()
+        fullAttributedString.append(noAccountString)
+        fullAttributedString.append(registration)
+    
+        
+        self.userAgreementInfoTextView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        self.userAgreementInfoTextView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
+        self.userAgreementInfoTextView.delegate = self
+        self.userAgreementInfoTextView.attributedText = fullAttributedString
+        self.userAgreementInfoTextView.isEditable = false
+        self.userAgreementInfoTextView.textAlignment = .center
+    }
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        if URL.absoluteString == "registration" {
+            let vc = RegistrationViewController()
+            let ui = UINavigationController(rootViewController: vc)
+            ui.modalPresentationStyle = .fullScreen
+            present(ui, animated: true)
+        }
+            return false
+        }
+
 }
