@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1095228091846-s0oq7mp7n81hra689gnflj6ivig63pke.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1095228091846-s0oq7mp7n81hra689gnflj6ivig63pke</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAXPIsN6sllQgMCacMAGsSq8yQ1cLjktNY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1095228091846</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>rapic.SignUp</string>
+	<key>PROJECT_ID</key>
+	<string>signup-5d988</string>
+	<key>STORAGE_BUCKET</key>
+	<string>signup-5d988.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1095228091846:ios:7c8ee7aebdf1d33f4d16c7</string>
+</dict>
+</plist>

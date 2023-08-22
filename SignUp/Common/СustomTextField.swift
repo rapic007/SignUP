@@ -13,6 +13,7 @@ final class CustomTextField: UITextField {
     
     let datePicker = UIDatePicker()
     
+    
     init() {
         super.init(frame: .zero)
         setupTextField()
@@ -48,6 +49,8 @@ final class CustomTextField: UITextField {
     
     //MARK: - Private Methods
     private func setupTextField() {
+        
+        delegate = self
         
         textColor = .black
         font = UIFont(name: "lato-regular", size: 16)
@@ -144,4 +147,12 @@ final class CustomTextField: UITextField {
         endEditing(true)
     }
     }
+
+extension CustomTextField: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}

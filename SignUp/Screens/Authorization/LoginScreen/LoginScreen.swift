@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginScreen: UIViewController, UITextViewDelegate {
+class LoginScreen: UIViewController {
     
     @IBOutlet var mainImage: UIImageView!
     
@@ -18,16 +18,17 @@ class LoginScreen: UIViewController, UITextViewDelegate {
     @IBOutlet var facebookImage: UIImageView!
     @IBOutlet var appleImage: UIImageView!
     
-    @IBOutlet var continueLabel: UILabel!
     
-    let userAgreementInfoTextView = UITextView()
+    let registrationTextView = CustomTextView()
+    let continueTextView = CustomTextView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         screenSettings()
-        setupTextView()
-        setupRegistrationLabel()
+        setupRegistrationTextView()
+        setupContinueTextView()
     }
+    
     
     func screenSettings() {
         view.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
@@ -51,6 +52,7 @@ class LoginScreen: UIViewController, UITextViewDelegate {
         emailTextField.placeholder = "Введите свой email"
         emailTextField.padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 50)
         emailTextField.setupLeftSideImage(ImageViewNamed: "emailImage")
+        emailTextField.keyboardType = .emailAddress
         
         //MARK: PasswordTF Properties
         
@@ -81,69 +83,80 @@ class LoginScreen: UIViewController, UITextViewDelegate {
         orLabel.font = UIFont(name: "lato-regular", size: 15)
         orLabel.textAlignment = .center
         orLabel.text = "или"
-        
-        //MARK: continueLabel Properties
-        
-        continueLabel.textColor = UIColor(red: 0.82, green: 0.353, blue: 0.133, alpha: 1)
-        continueLabel.font = UIFont(name: "lato-regular", size: 15)
-        continueLabel.textAlignment = .center
-        continueLabel.text = "Продолжить без регистрации"
     }
     
-    func setupTextView() {
-        
-        view.addSubview(userAgreementInfoTextView)
-        userAgreementInfoTextView.translatesAutoresizingMaskIntoConstraints = false
+    func setupRegistrationTextView() {
+
+        view.addSubview(registrationTextView)
         NSLayoutConstraint.activate([
-            userAgreementInfoTextView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
-            userAgreementInfoTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            userAgreementInfoTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            userAgreementInfoTextView.heightAnchor.constraint(equalToConstant: 30),
+            registrationTextView.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
+            registrationTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            registrationTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            registrationTextView.heightAnchor.constraint(equalToConstant: 30),
+        ])
+        let fullAttributedString = NSMutableAttributedString()
+        let registration = registrationTextView.setAttributeWithURL(Url: "registration", attribute: "Зарегистрироваться")
+        let noAccount = registrationTextView.setAttributeWithoutURL(attribute: "Нет аккаунта? ")
+
+        fullAttributedString.append(noAccount)
+        fullAttributedString.append(registration)
+
+        registrationTextView.delegate = self
+        registrationTextView.attributedText = fullAttributedString
+        registrationTextView.setupTextView()
+    }
+    
+    func  setupContinueTextView() {
+        
+        view.addSubview(continueTextView)
+
+        let attributedString = continueTextView.setAttributeWithURL(Url: "Continue", attribute: "Продолжить без регистрации")
+        continueTextView.attributedText = attributedString
+        continueTextView.delegate = self
+        continueTextView.setupTextView()
+        
+        NSLayoutConstraint.activate([
+            continueTextView.topAnchor.constraint(equalTo: registrationTextView.bottomAnchor, constant: 106),
+            continueTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            continueTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            continueTextView.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
-    
-    @objc
-    func loginButtonTapped() {
+    func openTaskScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc =  storyboard.instantiateViewController(withIdentifier: "TaskScreen")
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
     }
-    
     @objc
-    func handleTap(recognizer: UITapGestureRecognizer) {
-        let vc = RegistrationViewController()
-        let ui = UINavigationController(rootViewController: vc)
-        ui.modalPresentationStyle = .fullScreen
-        present(ui, animated: true)
+    func loginButtonTapped() {
+        let loginRequest = LoginUserRequest(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+        
+        guard Validator.isValidEmail(for: loginRequest.email) else {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
+        
+        guard Validator.isValidPassword(for: loginRequest.password) else {
+            AlertManager.showInvalidPasswordAlert(on: self)
+            return
+        }
+        AuthenticationService.shared.signIn(with: loginRequest) { [weak self] error in
+            
+            guard let self = self else { return }
+            
+            if let error = error {
+                AlertManager.showSignInErrorAlert(on: self, with: error)
+                return
+            }
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthentication()
+            }
+        }
     }
+}
 
-    private func setupRegistrationLabel() {
-        
-        let noAccountAttributes: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!,
-        ]
-        
-        let registrationAttributes: [NSAttributedString.Key : Any] = [
-            NSAttributedString.Key.font: UIFont(name: "lato-regular", size: 15)!,
-            NSAttributedString.Key.link: URL(string: "registration")!
-        ]
-        
-        let noAccountString = NSMutableAttributedString(string: "Нет аккаунта? ", attributes: noAccountAttributes)
-        let registration = NSMutableAttributedString(string:"Зарегистрироваться", attributes: registrationAttributes)
-        
-        let fullAttributedString = NSMutableAttributedString()
-        fullAttributedString.append(noAccountString)
-        fullAttributedString.append(registration)
-    
-        
-        self.userAgreementInfoTextView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
-        self.userAgreementInfoTextView.backgroundColor = UIColor(red: 0.961, green: 0.961, blue: 0.961, alpha: 1)
-        self.userAgreementInfoTextView.delegate = self
-        self.userAgreementInfoTextView.attributedText = fullAttributedString
-        self.userAgreementInfoTextView.isEditable = false
-        self.userAgreementInfoTextView.textAlignment = .center
-    }
+extension LoginScreen: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.absoluteString == "registration" {
             let vc = RegistrationViewController()
@@ -151,7 +164,9 @@ class LoginScreen: UIViewController, UITextViewDelegate {
             ui.modalPresentationStyle = .fullScreen
             present(ui, animated: true)
         }
+        else if  URL.absoluteString == "Continue" {
+            openTaskScreen()
+        }
             return false
         }
-
 }

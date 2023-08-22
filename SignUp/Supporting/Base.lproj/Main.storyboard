@@ -80,15 +80,6 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsy-Pp-yes">
-                                <rect key="frame" x="20" y="630" width="350" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="DRV-2N-EDP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6hp-Em-u9u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -96,14 +87,12 @@
                             <constraint firstItem="Kl9-zm-c6r" firstAttribute="leading" secondItem="6hp-Em-u9u" secondAttribute="leading" constant="20" id="0Nc-kM-BDF"/>
                             <constraint firstItem="g0L-w6-ub5" firstAttribute="leading" secondItem="6hp-Em-u9u" secondAttribute="leading" constant="160" id="24S-Or-Zj7"/>
                             <constraint firstItem="Bd8-WS-alX" firstAttribute="top" secondItem="g0L-w6-ub5" secondAttribute="bottom" constant="16" id="3zs-q2-fCb"/>
-                            <constraint firstItem="Fsy-Pp-yes" firstAttribute="top" secondItem="Bd8-WS-alX" secondAttribute="bottom" constant="16" id="69d-SF-pJG"/>
                             <constraint firstItem="6MT-bN-Zwz" firstAttribute="leading" secondItem="6hp-Em-u9u" secondAttribute="leading" constant="92" id="AGn-f6-Yzp"/>
                             <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="oW5-2O-nQw" secondAttribute="trailing" constant="20" id="BjY-e5-fkb"/>
                             <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="oW5-2O-nQw" secondAttribute="trailing" constant="20" id="Cdt-sU-GzS"/>
                             <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="g0L-w6-ub5" secondAttribute="trailing" constant="160" id="DBB-tl-FMA"/>
                             <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="Kl9-zm-c6r" secondAttribute="trailing" constant="20" id="FbG-mT-Bwm"/>
                             <constraint firstItem="zgn-sd-eAd" firstAttribute="leading" secondItem="6hp-Em-u9u" secondAttribute="leading" constant="20" id="Fps-2L-wEp"/>
-                            <constraint firstItem="Fsy-Pp-yes" firstAttribute="leading" secondItem="6hp-Em-u9u" secondAttribute="leading" constant="20" id="HxL-V7-5kh"/>
                             <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="6MT-bN-Zwz" secondAttribute="trailing" constant="104" id="VHW-02-CBQ"/>
                             <constraint firstItem="zgn-sd-eAd" firstAttribute="top" secondItem="Aan-jD-FLP" secondAttribute="bottom" constant="20" id="ZdZ-2d-7Zc"/>
                             <constraint firstItem="Bd8-WS-alX" firstAttribute="centerX" secondItem="6hp-Em-u9u" secondAttribute="centerX" id="aY6-kC-8rO"/>
@@ -116,13 +105,11 @@
                             <constraint firstItem="oW5-2O-nQw" firstAttribute="leading" secondItem="6hp-Em-u9u" secondAttribute="leading" constant="20" id="q4X-8b-OgX"/>
                             <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="Aan-jD-FLP" secondAttribute="trailing" constant="20" id="raK-ur-yQG"/>
                             <constraint firstItem="Kl9-zm-c6r" firstAttribute="top" secondItem="6MT-bN-Zwz" secondAttribute="bottom" constant="20" id="xcp-5C-eHW"/>
-                            <constraint firstItem="6hp-Em-u9u" firstAttribute="trailing" secondItem="Fsy-Pp-yes" secondAttribute="trailing" constant="20" id="yvN-Po-Fl0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f1h-ri-FbE"/>
                     <connections>
                         <outlet property="appleImage" destination="5Sm-Kk-6ns" id="nIN-Wz-ccb"/>
-                        <outlet property="continueLabel" destination="Fsy-Pp-yes" id="6dY-6R-0m1"/>
                         <outlet property="emailTextField" destination="Aan-jD-FLP" id="Hee-XJ-M7A"/>
                         <outlet property="facebookImage" destination="XqU-PT-wWB" id="9Hs-VL-FfS"/>
                         <outlet property="googleImage" destination="4Xx-BT-XLG" id="13I-JW-qoT"/>

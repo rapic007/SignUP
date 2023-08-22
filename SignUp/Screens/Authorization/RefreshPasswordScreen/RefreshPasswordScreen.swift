@@ -1,10 +1,3 @@
-//
-//  RefreshEmailScreen.swift
-//  SignUp
-//
-//  Created by Влад  on 14.03.23.
-//
-
 import UIKit
 
 class RefreshPasswordScreen: UIViewController {
@@ -68,8 +61,20 @@ class RefreshPasswordScreen: UIViewController {
     
     @objc
     func recoverButtonTapped() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "NewPasswordScreen")
-        self.present(vc, animated: true)
+        let email = self.emailTextField.text ?? ""
+        
+        if !Validator.isValidEmail(for: email) {
+            AlertManager.showInvalidEmailAlert(on: self)
+            return
+        }
+        AuthenticationService.shared.forgotPassword(with: email) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showErrorSendingPasswordReser(on: self, with: error)
+                return
+            }
+            
+            AlertManager.showPasswordResetSend(on: self)
+        }
     }
 }

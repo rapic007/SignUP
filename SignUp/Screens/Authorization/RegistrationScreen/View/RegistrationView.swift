@@ -1,16 +1,16 @@
 import UIKit
 
-final class RegistrationView: UIView {
-    
-
+ class RegistrationView: UIView {
     
     let registrationLabel = CustomLabel()
     let emailTextField = CustomTextField()
     let passwordTextField = CustomTextField()
     let messageLabel = CustomLabel()
     let registrationButton = CustomButton()
+    let haveAccountTextView = CustomTextView()
     
-    var onButtonPressed: (() -> Void)?
+    var onRegistrationButtonPressed: (() -> Void)?
+    var onSignInPressed: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,9 +41,20 @@ final class RegistrationView: UIView {
         messageLabel.text = "* Минимум 6 символов, 1 цифра, 1 прописная буква, 1 специальный символ"
 
         registrationButton.setTitle("Зарегистрироваться", for: .normal)
-        registrationButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        registrationButton.addTarget(self, action: #selector(registrationButtonPressed), for: .touchUpInside)
         
-        [registrationLabel, emailTextField, passwordTextField, messageLabel, registrationButton].forEach {
+        let fullAttributedString = NSMutableAttributedString()
+        let signIn = haveAccountTextView.setAttributeWithURL(Url: "signIn", attribute: "Войти")
+        let haveAccount = haveAccountTextView.setAttributeWithoutURL(attribute: "Есть аккаунт? ")
+
+        fullAttributedString.append(haveAccount)
+        fullAttributedString.append(signIn)
+
+        haveAccountTextView.delegate = self
+        haveAccountTextView.attributedText = fullAttributedString
+        haveAccountTextView.setupTextView()
+        
+        [registrationLabel, emailTextField, passwordTextField, messageLabel, registrationButton, haveAccountTextView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview($0)
         }
@@ -71,11 +82,25 @@ final class RegistrationView: UIView {
             registrationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             registrationButton.heightAnchor.constraint(equalToConstant: 44),
             
+            haveAccountTextView.topAnchor.constraint(equalTo: registrationButton.bottomAnchor, constant: 95),
+            haveAccountTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            haveAccountTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            haveAccountTextView.heightAnchor.constraint(equalToConstant: 30),
+            
         ])
     }
     
     @objc
-    func buttonPressed() {
-        onButtonPressed?()
+    func registrationButtonPressed() {
+        onRegistrationButtonPressed?()
+    }
+}
+extension RegistrationView: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        guard URL.absoluteString != "signIn" else {
+            onSignInPressed?()
+            return true
+        }
+        return true
     }
 }

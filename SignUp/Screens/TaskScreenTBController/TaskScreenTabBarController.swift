@@ -42,7 +42,18 @@ class TaskScreenTabBarController: UITabBarController {
     }
 
     @IBAction func backMainScreen(_ sender: Any) {
-        self.dismiss(animated: true)
+        AuthenticationService.shared.signOut { [weak self] error in
+            guard let self = self else {return}
+
+            if let error = error {
+                AlertManager.showLogoutError(on: self, with: error)
+                return
+            }
+            
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthentication()
+            }
+        }
     }
 }
 
