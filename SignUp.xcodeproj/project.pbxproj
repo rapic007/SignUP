@@ -18,12 +18,13 @@
 		CB5D4C712A8BDF61007CA851 /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D4C702A8BDF61007CA851 /* LoginUserRequest.swift */; };
 		CB5D4C732A8D291C007CA851 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D4C722A8D291C007CA851 /* AlertManager.swift */; };
 		CB5D4C752A8D42CA007CA851 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D4C742A8D42CA007CA851 /* Validator.swift */; };
+		CB6788832AD70ADB00312609 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB6788822AD70ADB00312609 /* GoogleService-Info.plist */; };
+		CB6788862AD70BEA00312609 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6788852AD70BEA00312609 /* NotificationsController.swift */; };
 		CB738EEB2A27AACF006E31C0 /* TaskCreateTimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB738EEA2A27AACF006E31C0 /* TaskCreateTimerModel.swift */; };
 		CB738EED2A27ABB1006E31C0 /* TaskCreateTimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB738EEC2A27ABB1006E31C0 /* TaskCreateTimerCell.swift */; };
 		CB89A0CF2A2286740093328C /* CreatingNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89A0CE2A2286740093328C /* CreatingNewTask.swift */; };
 		CB89A0D12A2289070093328C /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89A0D02A2289070093328C /* CustomButton.swift */; };
 		CB90C04C2A8286EB00860B2F /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90C04B2A8286EB00860B2F /* CustomTextView.swift */; };
-		CB90C04E2A854C0900860B2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB90C04D2A854C0900860B2F /* GoogleService-Info.plist */; };
 		CB90C0522A85557400860B2F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CB90C0512A85557400860B2F /* FirebaseAuth */; };
 		CB90C0542A85557400860B2F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CB90C0532A85557400860B2F /* FirebaseFirestore */; };
 		CB90C0562A85557400860B2F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CB90C0552A85557400860B2F /* FirebaseStorage */; };
@@ -80,12 +81,13 @@
 		CB5D4C702A8BDF61007CA851 /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		CB5D4C722A8D291C007CA851 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		CB5D4C742A8D42CA007CA851 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		CB6788822AD70ADB00312609 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CB6788852AD70BEA00312609 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		CB738EEA2A27AACF006E31C0 /* TaskCreateTimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateTimerModel.swift; sourceTree = "<group>"; };
 		CB738EEC2A27ABB1006E31C0 /* TaskCreateTimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateTimerCell.swift; sourceTree = "<group>"; };
 		CB89A0CE2A2286740093328C /* CreatingNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingNewTask.swift; sourceTree = "<group>"; };
 		CB89A0D02A2289070093328C /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CB90C04B2A8286EB00860B2F /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
-		CB90C04D2A854C0900860B2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBBCA8A82A44CE5200915486 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		CBBDD13429BC79F8004443D4 /* СustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СustomTextField.swift"; sourceTree = "<group>"; };
 		CBCAAA6029BCA7450056FB23 /* lato-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lato-regular.ttf"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				CB5D4C6C2A8BCE33007CA851 /* AuthenticationService.swift */,
 				CB5D4C722A8D291C007CA851 /* AlertManager.swift */,
 				CB5D4C742A8D42CA007CA851 /* Validator.swift */,
+				CB6788852AD70BEA00312609 /* NotificationsController.swift */,
 			);
 			path = "Servicе";
 			sourceTree = "<group>";
@@ -271,7 +274,7 @@
 				CBCB7B2529BA53DB00E5F34D /* Main.storyboard */,
 				CBCB7B2A29BA53DB00E5F34D /* LaunchScreen.storyboard */,
 				CBCB7B2829BA53DB00E5F34D /* Assets.xcassets */,
-				CB90C04D2A854C0900860B2F /* GoogleService-Info.plist */,
+				CB6788822AD70ADB00312609 /* GoogleService-Info.plist */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -689,7 +692,7 @@
 				CBCB7B2929BA53DB00E5F34D /* Assets.xcassets in Resources */,
 				CBCAAA6129BCA7450056FB23 /* lato-regular.ttf in Resources */,
 				CBCB7B2729BA53DB00E5F34D /* Main.storyboard in Resources */,
-				CB90C04E2A854C0900860B2F /* GoogleService-Info.plist in Resources */,
+				CB6788832AD70ADB00312609 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +735,7 @@
 				CBFFDB1F2A6EEBE300BFBAC9 /* RegistrationViewController.swift in Sources */,
 				CB24BA7E29DF310F006DA3F7 /* TaskTypeCellModel.swift in Sources */,
 				CB5D4C6D2A8BCE33007CA851 /* AuthenticationService.swift in Sources */,
+				CB6788862AD70BEA00312609 /* NotificationsController.swift in Sources */,
 				CBBDD13529BC79F8004443D4 /* СustomTextField.swift in Sources */,
 				CBF14D3B29FFD86F0098A4CE /* TaskCreatePeriodCell.swift in Sources */,
 				CBF14D3929FFD3510098A4CE /* TaskCreatePeriodModel.swift in Sources */,

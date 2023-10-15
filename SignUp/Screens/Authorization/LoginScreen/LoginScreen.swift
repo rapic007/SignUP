@@ -18,7 +18,7 @@ class LoginScreen: UIViewController {
     @IBOutlet var facebookImage: UIImageView!
     @IBOutlet var appleImage: UIImageView!
     
-    
+    let notifi = NotificationsController()
     let registrationTextView = CustomTextView()
     let continueTextView = CustomTextView()
     
@@ -27,6 +27,7 @@ class LoginScreen: UIViewController {
         screenSettings()
         setupRegistrationTextView()
         setupContinueTextView()
+        notifi.checkForPermission()
     }
     
     

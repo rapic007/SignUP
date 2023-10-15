@@ -26,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     public func checkAuthentication() {
         if Auth.auth().currentUser == nil {
             self.goToStoryboard(withIdentifier: "Start")
-    //        window?.rootViewController = ui
         } else {
             self.goToStoryboard(withIdentifier: "TaskScreen")
         }
